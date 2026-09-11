@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cai268m7e08xa"]
+
+[ext_resource type="Script" uid="uid://vhf8hmwv80g2" path="res://scripts/Player/player.gd" id="1_1kbk7"]
+[ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="1_cyojo"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04dxk"]
+radius = 40.0
+height = 86.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1422318831]
+script = ExtResource("1_1kbk7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472587453]
+scale = Vector2(0.6484375, 0.6484375)
+texture = ExtResource("1_cyojo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=125531959]
+shape = SubResource("CapsuleShape2D_04dxk")
+
+[node name="HammerPivot" type="Sprite2D" parent="." unique_id=1760131048]
