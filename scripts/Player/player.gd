@@ -11,6 +11,7 @@ var jump_modifier := 1.0
 const INVULNERABILITY_TIME = 2
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var label: Label = $Label
 
 var max_health = 3
 var current_health := 3
@@ -52,7 +53,9 @@ func set_hammer_charging(is_charging : bool) -> void :
 	if is_charging :
 		speed_modifier = 0.4
 		jump_modifier = 0.6
+		label.text = "Clicked"
 	else :
+		label.text = "Released"
 		speed_modifier = 1.0
 		jump_modifier = 1.0
 		

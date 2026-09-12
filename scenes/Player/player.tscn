@@ -9,6 +9,8 @@ radius = 40.0
 height = 86.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1422318831]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_1kbk7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472587453]
@@ -20,5 +22,12 @@ shape = SubResource("CapsuleShape2D_04dxk")
 
 [node name="HammerPivot" type="Sprite2D" parent="." unique_id=1760131048]
 
-[node name="HammerPivot2" parent="." unique_id=144081329 instance=ExtResource("3_gqjuk")]
-position = Vector2(0, -81)
+[node name="HammerPivot2" parent="HammerPivot" unique_id=144081329 instance=ExtResource("3_gqjuk")]
+position = Vector2(0, 1)
+
+[node name="Label" type="Label" parent="." unique_id=281869265]
+offset_left = -35.0
+offset_top = -77.0
+offset_right = 35.0
+offset_bottom = -54.0
+text = "Released"
