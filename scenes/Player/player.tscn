@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vhf8hmwv80g2" path="res://scripts/Player/player.gd" id="1_1kbk7"]
 [ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="1_cyojo"]
+[ext_resource type="PackedScene" uid="uid://b5jyjscbe2oqg" path="res://scenes/Hammer/hammer_pivot.tscn" id="3_gqjuk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04dxk"]
 radius = 40.0
@@ -18,3 +19,6 @@ texture = ExtResource("1_cyojo")
 shape = SubResource("CapsuleShape2D_04dxk")
 
 [node name="HammerPivot" type="Sprite2D" parent="." unique_id=1760131048]
+
+[node name="HammerPivot2" parent="." unique_id=144081329 instance=ExtResource("3_gqjuk")]
+position = Vector2(0, -81)
