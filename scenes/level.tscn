@@ -1,16 +1,39 @@
 [gd_scene format=3 uid="uid://cgu8a13w726kc"]
 
 [ext_resource type="PackedScene" uid="uid://cai268m7e08xa" path="res://scenes/Player/player.tscn" id="1_2q6dc"]
+[ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="2_w7c3h"]
+[ext_resource type="Script" uid="uid://bccm8qqwr8pn6" path="res://scripts/test.gd" id="2_w8frs"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04dxk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i7ya"]
+size = Vector2(105, 118)
 
 [node name="Node2D" type="Node2D" unique_id=6856160]
 
 [node name="Player" parent="." unique_id=1422318831 instance=ExtResource("1_2q6dc")]
 position = Vector2(246, 151)
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1742987236]
+process_callback = 0
+limit_bottom = 400
+position_smoothing_enabled = true
+
 [node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=1995379944]
-position = Vector2(252, 317)
+position = Vector2(281, 362)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=2144947963]
 shape = SubResource("WorldBoundaryShape2D_04dxk")
+
+[node name="test" type="CharacterBody2D" parent="." unique_id=1159254198]
+position = Vector2(408.00003, 221)
+scale = Vector2(0.57065606, 0.57065606)
+collision_layer = 2
+script = ExtResource("2_w8frs")
+
+[node name="Sprite2D" type="Sprite2D" parent="test" unique_id=967641981]
+modulate = Color(1, 1, 0.18431373, 1)
+texture = ExtResource("2_w7c3h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test" unique_id=184639108]
+shape = SubResource("RectangleShape2D_5i7ya")

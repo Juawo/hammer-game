@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b5jyjscbe2oqg"]
+
+[ext_resource type="Script" uid="uid://bfmsdufmmvvo4" path="res://scripts/Hammer/hammer_pivot.gd" id="1_7yr1y"]
+[ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="2_cbcvn"]
+[ext_resource type="Texture2D" uid="uid://nhnoa8xmqvk" path="res://assets/ui/progress.png" id="3_prrad"]
+[ext_resource type="Texture2D" uid="uid://8h0qnb5ryddb" path="res://assets/ui/outline.png" id="4_pkpup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
+size = Vector2(128.5, 109)
+
+[node name="HammerPivot" type="Node2D" unique_id=144081329]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_7yr1y")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=1988051966]
+self_modulate = Color(1, 0.105882354, 0.7019608, 1)
+texture = ExtResource("2_cbcvn")
+
+[node name="progress_bar" type="TextureProgressBar" parent="sprite" unique_id=159211517]
+top_level = true
+offset_left = 83.33333
+offset_top = -46.666664
+offset_right = 173.33333
+offset_bottom = 43.333336
+pivot_offset = Vector2(45, 45)
+value = 33.0
+fill_mode = 4
+texture_under = ExtResource("3_prrad")
+texture_over = ExtResource("4_pkpup")
+texture_progress = ExtResource("3_prrad")
+tint_under = Color(0.23837075, 0.23373532, 0.35466883, 1)
+tint_progress = Color(0.40559998, 0.78, 0.41184, 1)
+
+[node name="hammer_area" type="Area2D" parent="." unique_id=1895019698]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hammer_area" unique_id=1594846390]
+position = Vector2(-0.75, -0.5)
+shape = SubResource("RectangleShape2D_04dxk")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1413554373]
