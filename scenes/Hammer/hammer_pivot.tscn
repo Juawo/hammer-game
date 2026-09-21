@@ -9,6 +9,7 @@
 size = Vector2(128.5, 109)
 
 [node name="HammerPivot" type="Node2D" unique_id=144081329]
+z_index = 2
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_7yr1y")
 
@@ -33,7 +34,7 @@ tint_progress = Color(0.40559998, 0.78, 0.41184, 1)
 
 [node name="hammer_area" type="Area2D" parent="." unique_id=1895019698]
 collision_layer = 0
-collision_mask = 3
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hammer_area" unique_id=1594846390]
 position = Vector2(-0.75, -0.5)

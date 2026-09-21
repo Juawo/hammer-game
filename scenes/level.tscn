@@ -3,11 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://cai268m7e08xa" path="res://scenes/Player/player.tscn" id="1_2q6dc"]
 [ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="2_w7c3h"]
 [ext_resource type="Script" uid="uid://bccm8qqwr8pn6" path="res://scripts/test.gd" id="2_w8frs"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04dxk"]
+[ext_resource type="PackedScene" uid="uid://d1ilvr76v7c5k" path="res://scenes/Enemies/enemy_patrol.tscn" id="4_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://1ikkfwb8ilqd" path="res://scenes/Enemies/enemy_shooter.tscn" id="4_ppgk2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5i7ya"]
 size = Vector2(105, 118)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_04dxk"]
 
 [node name="Node2D" type="Node2D" unique_id=6856160]
 
@@ -19,16 +21,9 @@ process_callback = 0
 limit_bottom = 400
 position_smoothing_enabled = true
 
-[node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=1995379944]
-position = Vector2(281, 362)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=2144947963]
-shape = SubResource("WorldBoundaryShape2D_04dxk")
-
 [node name="test" type="CharacterBody2D" parent="." unique_id=1159254198]
-position = Vector2(408.00003, 221)
-scale = Vector2(0.57065606, 0.57065606)
-collision_layer = 2
+position = Vector2(1006, 295.99997)
+scale = Vector2(0.57065606, 11.530653)
 script = ExtResource("2_w8frs")
 
 [node name="Sprite2D" type="Sprite2D" parent="test" unique_id=967641981]
@@ -37,3 +32,43 @@ texture = ExtResource("2_w7c3h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="test" unique_id=184639108]
 shape = SubResource("RectangleShape2D_5i7ya")
+
+[node name="test2" type="CharacterBody2D" parent="." unique_id=2041452767]
+position = Vector2(-538, 338.99997)
+scale = Vector2(0.57065606, 12.810654)
+script = ExtResource("2_w8frs")
+
+[node name="Sprite2D" type="Sprite2D" parent="test2" unique_id=1204558844]
+modulate = Color(1, 1, 0.18431373, 1)
+texture = ExtResource("2_w7c3h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test2" unique_id=848475814]
+shape = SubResource("RectangleShape2D_5i7ya")
+
+[node name="test3" type="CharacterBody2D" parent="." unique_id=1112335310]
+position = Vector2(200, -336)
+rotation = 1.5795845
+scale = Vector2(0.57065606, 12.810654)
+script = ExtResource("2_w8frs")
+
+[node name="Sprite2D" type="Sprite2D" parent="test3" unique_id=1680805721]
+modulate = Color(1, 1, 0.18431373, 1)
+texture = ExtResource("2_w7c3h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test3" unique_id=1627420640]
+shape = SubResource("RectangleShape2D_5i7ya")
+
+[node name="EnemyPatrol" parent="." unique_id=941073137 instance=ExtResource("4_mx8sn")]
+position = Vector2(-172, 337.99997)
+scale = Vector2(0.55, 0.55)
+
+[node name="RigidBody2D" type="StaticBody2D" parent="." unique_id=1995379944]
+position = Vector2(281, 362)
+scale = Vector2(1, 6.2800026)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=2144947963]
+shape = SubResource("WorldBoundaryShape2D_04dxk")
+
+[node name="EnemyShooter" parent="." unique_id=599547735 instance=ExtResource("4_ppgk2")]
+position = Vector2(-30, 315)
+scale = Vector2(0.515, 0.515)

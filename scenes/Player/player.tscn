@@ -8,9 +8,11 @@
 radius = 40.0
 height = 86.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1422318831]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5i7ya"]
+radius = 38.327538
+
+[node name="Player" type="CharacterBody2D" unique_id=1422318831 groups=["Player"]]
 collision_layer = 2
-collision_mask = 3
 script = ExtResource("1_1kbk7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472587453]
@@ -30,4 +32,14 @@ offset_left = -35.0
 offset_top = -77.0
 offset_right = 35.0
 offset_bottom = -54.0
-text = "Released"
+text = "life :  3"
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=663458961]
+collision_layer = 2
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=775921106]
+shape = SubResource("CircleShape2D_5i7ya")
+debug_color = Color(0.7043441, 0.42293438, 0.6538377, 0.41960785)
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
