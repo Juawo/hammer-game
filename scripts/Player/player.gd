@@ -22,7 +22,6 @@ var knockback_velocity := Vector2.ZERO
 func _ready() -> void:
 	current_health = max_health
 
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
@@ -53,19 +52,15 @@ func set_hammer_charging(is_charging : bool) -> void :
 	if is_charging :
 		speed_modifier = 0.4
 		jump_modifier = 0.6
-		label.text = "Clicked"
 	else :
-		label.text = "Released"
 		speed_modifier = 1.0
 		jump_modifier = 1.0
-		
-		
 
 func take_damage(value : int) -> void :
 	if is_invulnerable :
 		return
-	
 	current_health -= value
+	label.text = "life : " + str(current_health)
 	
 	if current_health <= 0 :
 		die()
@@ -74,7 +69,7 @@ func take_damage(value : int) -> void :
 
 func trigger_invulnerability() -> void :
 	is_invulnerable = true
-	
+	# add visuals to player understand that he is invulenrable 
 	await get_tree().create_timer(INVULNERABILITY_TIME, false).timeout
 	
 	is_invulnerable = false
@@ -82,3 +77,7 @@ func trigger_invulnerability() -> void :
 func die() -> void :
 	# Add visuals and connect to GameManager
 	queue_free()
+
+func _on_hurtbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("DamageDealer") :
+		take_damage(area.damage_amount)

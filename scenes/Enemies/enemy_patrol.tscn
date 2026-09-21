@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://d1ilvr76v7c5k"]
+
+[ext_resource type="Script" uid="uid://i7nxhbvhqwxv" path="res://scripts/Enemies/enemy_patrol.gd" id="1_25k3p"]
+[ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="2_an6w3"]
+[ext_resource type="PackedScene" uid="uid://r04tfpinw5mt" path="res://scenes/hitbox.tscn" id="3_an6w3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
+size = Vector2(112, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i7ya"]
+size = Vector2(122.5, 122.5)
+
+[node name="EnemyPatrol" type="CharacterBody2D" unique_id=941073137 groups=["Enemies"]]
+collision_layer = 4
+script = ExtResource("1_25k3p")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=1255842886]
+texture = ExtResource("2_an6w3")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1465143544]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_04dxk")
+
+[node name="wall_check" type="RayCast2D" parent="." unique_id=1175736309]
+scale = Vector2(1, 5)
+target_position = Vector2(80, 0)
+
+[node name="Hitbox" parent="." unique_id=1467584518 instance=ExtResource("3_an6w3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1166465925]
+position = Vector2(-0.25, -0.75)
+shape = SubResource("RectangleShape2D_5i7ya")
+debug_color = Color(0.64262533, 0.40566707, 0.85104734, 0.41960785)

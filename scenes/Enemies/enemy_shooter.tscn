@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://1ikkfwb8ilqd"]
+
+[ext_resource type="Script" uid="uid://bodyyiis5c67k" path="res://scripts/Enemies/enemy_shooter.gd" id="1_4uixn"]
+[ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="2_83hif"]
+[ext_resource type="PackedScene" uid="uid://r04tfpinw5mt" path="res://scenes/hitbox.tscn" id="3_83hif"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
+size = Vector2(120, 107.19271)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uixn"]
+size = Vector2(506, 194.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y00xt"]
+size = Vector2(122.5, 122.5)
+
+[node name="EnemyShooter" type="CharacterBody2D" unique_id=599547735 groups=["Enemies"]]
+collision_layer = 4
+script = ExtResource("1_4uixn")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=2104442504]
+texture = ExtResource("2_83hif")
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=730174297]
+position = Vector2(0, -0.38480473)
+scale = Vector2(0.9852358, 1.1266588)
+shape = SubResource("RectangleShape2D_04dxk")
+
+[node name="wall_check" type="RayCast2D" parent="." unique_id=661446592]
+scale = Vector2(1, 5)
+target_position = Vector2(80, 0)
+
+[node name="shoot_timer" type="Timer" parent="." unique_id=1428674700]
+wait_time = 2.0
+one_shot = true
+
+[node name="shoot_area" type="Area2D" parent="." unique_id=1197443018]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shoot_area" unique_id=812441730]
+position = Vector2(1, -36.75)
+shape = SubResource("RectangleShape2D_4uixn")
+debug_color = Color(0.7485352, 0.39552584, 0.6242434, 0.41960785)
+
+[node name="Hitbox" parent="." unique_id=1467584518 instance=ExtResource("3_83hif")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2145734003]
+position = Vector2(-0.25, -0.75)
+shape = SubResource("RectangleShape2D_y00xt")
+debug_color = Color(0.64262533, 0.40566707, 0.85104734, 0.41960785)
+
+[connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="body_entered" from="shoot_area" to="." method="_on_shoot_area_body_entered"]
+[connection signal="body_exited" from="shoot_area" to="." method="_on_shoot_area_body_exited"]
