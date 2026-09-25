@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c6l4fed0qo1lk"]
+
+[ext_resource type="Script" uid="uid://cd360o8iitwnv" path="res://scenes/levels/level_exit.gd" id="1_oaugr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
+size = Vector2(38, 20)
+
+[sub_resource type="Curve" id="Curve_04dxk"]
+_data = [Vector2(0, 0.63759696), 0.0, -0.047017213, 0, 0, Vector2(0.99193573, 0.3565892), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_b83sn"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[node name="LevelExit" type="Area2D" unique_id=724218559]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_oaugr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=411068128]
+shape = SubResource("RectangleShape2D_04dxk")
+debug_color = Color(0.46961975, 0.56609637, 0.47941804, 0.41960785)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1100728595]
+emitting = false
+amount = 30
+lifetime = 1.6700000000000002
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(20, 10)
+gravity = Vector2(-130, -1)
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.1
+linear_accel_min = 3.0
+linear_accel_max = 3.0
+radial_accel_min = -3.0
+radial_accel_max = 10.0
+angle_min = 92.1
+angle_max = 92.1
+scale_amount_min = 3.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_04dxk")
+color_initial_ramp = SubResource("Gradient_b83sn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
