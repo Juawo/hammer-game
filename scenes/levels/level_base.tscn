@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://pti5yq2b0qw8"]
+
+[ext_resource type="Script" uid="uid://x6gdsu0nh3bk" path="res://scripts/Levels/level_base.gd" id="1_vvcwp"]
+[ext_resource type="Script" uid="uid://bccm8qqwr8pn6" path="res://scripts/test.gd" id="2_d61h5"]
+[ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="3_6cjw3"]
+[ext_resource type="PackedScene" uid="uid://c6l4fed0qo1lk" path="res://scenes/levels/level_exit.tscn" id="4_6cjw3"]
+[ext_resource type="PackedScene" uid="uid://cai268m7e08xa" path="res://scenes/Player/player.tscn" id="4_d61h5"]
+[ext_resource type="PackedScene" uid="uid://52rxk6v26a2i" path="res://scenes/levels/breakable_wall.tscn" id="5_dje0g"]
+[ext_resource type="PackedScene" uid="uid://d1ilvr76v7c5k" path="res://scenes/Enemies/enemy_patrol.tscn" id="7_40ga3"]
+[ext_resource type="PackedScene" uid="uid://1ikkfwb8ilqd" path="res://scenes/Enemies/enemy_shooter.tscn" id="8_ynct0"]
+
+[sub_resource type="TileSet" id="TileSet_04dxk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dje0g"]
+size = Vector2(105, 118)
+
+[node name="LevelBase" type="Node2D" unique_id=1986938857]
+script = ExtResource("1_vvcwp")
+
+[node name="Environment" type="Node2D" parent="." unique_id=834847580]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Environment" unique_id=1585353426]
+tile_set = SubResource("TileSet_04dxk")
+
+[node name="wall_right" type="CharacterBody2D" parent="Environment" unique_id=465879592]
+position = Vector2(655, 136)
+scale = Vector2(0.4914217, 1.8892478)
+script = ExtResource("2_d61h5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/wall_right" unique_id=703689883]
+modulate = Color(1, 1, 0.18431373, 1)
+texture = ExtResource("3_6cjw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/wall_right" unique_id=618611485]
+scale = Vector2(1, 1.0000001)
+shape = SubResource("RectangleShape2D_dje0g")
+
+[node name="wall_left" type="CharacterBody2D" parent="Environment" unique_id=1913554109]
+position = Vector2(-10, 194)
+scale = Vector2(0.49242967, 3.7513332)
+script = ExtResource("2_d61h5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/wall_left" unique_id=1859908558]
+modulate = Color(1, 1, 0.18431373, 1)
+texture = ExtResource("3_6cjw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/wall_left" unique_id=1341158244]
+shape = SubResource("RectangleShape2D_dje0g")
+
+[node name="floor" type="CharacterBody2D" parent="Environment" unique_id=1623158205]
+position = Vector2(313.99997, 398)
+rotation = 1.5707964
+scale = Vector2(0.86134416, 9.324675)
+script = ExtResource("2_d61h5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/floor" unique_id=1746602862]
+modulate = Color(1, 1, 0.18431373, 1)
+texture = ExtResource("3_6cjw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/floor" unique_id=1720339015]
+shape = SubResource("RectangleShape2D_dje0g")
+
+[node name="top" type="CharacterBody2D" parent="Environment" unique_id=609138283]
+position = Vector2(305, -12)
+rotation = 1.5707964
+scale = Vector2(0.594896, 5.9078994)
+script = ExtResource("2_d61h5")
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/top" unique_id=1683439594]
+modulate = Color(1, 1, 0.18431373, 1)
+texture = ExtResource("3_6cjw3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/top" unique_id=546502991]
+shape = SubResource("RectangleShape2D_dje0g")
+
+[node name="LevelExit" parent="Environment" unique_id=724218559 instance=ExtResource("4_6cjw3")]
+position = Vector2(697, 299)
+scale = Vector2(4.453125, 4.3633165)
+
+[node name="BreakableWall" parent="Environment" unique_id=1804956141 instance=ExtResource("5_dje0g")]
+position = Vector2(660, 301.99997)
+scale = Vector2(0.8153856, 0.8153856)
+
+[node name="Entities" type="Node2D" parent="." unique_id=1511458260]
+
+[node name="Player" parent="Entities" unique_id=1422318831 instance=ExtResource("4_d61h5")]
+position = Vector2(191, 285)
+scale = Vector2(0.5, 0.5)
+
+[node name="EnemyPatrol" parent="Entities" unique_id=941073137 instance=ExtResource("7_40ga3")]
+position = Vector2(56.999996, 150.99998)
+scale = Vector2(0.4, 0.4)
+
+[node name="EnemyShooter" parent="Entities" unique_id=599547735 instance=ExtResource("8_ynct0")]
+position = Vector2(462, 329)
+scale = Vector2(0.4, 0.4)
+
+[node name="Systems" type="Node2D" parent="." unique_id=1952089311]
+
+[node name="Camera2D" type="Camera2D" parent="Systems" unique_id=80428161]
+position = Vector2(320, 179)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1117925686]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=37490488]
+visible = false
+offset_left = 256.0
+offset_top = 117.0
+offset_right = 405.0
+offset_bottom = 140.0
+text = "GO TO NEXT LEVEL!"
