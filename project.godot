@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hammer Game"
-run/main_scene="uid://cgu8a13w726kc"
+run/main_scene="uid://pti5yq2b0qw8"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -41,6 +41,8 @@ Player=""
 Enemies=""
 Projectiles=""
 DamageDealer=""
+Spawners=""
+Level=""
 
 [input]
 
