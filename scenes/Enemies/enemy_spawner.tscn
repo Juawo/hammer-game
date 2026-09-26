@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://bgkdiiads01ar"]
+
+[ext_resource type="Script" uid="uid://cmtga67qgmaxk" path="res://scripts/Enemies/enemy_spawner.gd" id="1_adwfq"]
+[ext_resource type="PackedScene" uid="uid://1ikkfwb8ilqd" path="res://scenes/Enemies/enemy_shooter.tscn" id="2_7kdbv"]
+[ext_resource type="PackedScene" uid="uid://d1ilvr76v7c5k" path="res://scenes/Enemies/enemy_patrol.tscn" id="3_abhyb"]
+
+[sub_resource type="Gradient" id="Gradient_04dxk"]
+offsets = PackedFloat32Array(0, 0.47106624, 1)
+colors = PackedColorArray(0.31, 0.30163, 0.29140002, 1, 0.7770352, 0.77703506, 0.77703506, 0.827451, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_5i7ya"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_7kdbv"]
+offsets = PackedFloat32Array(0.1664977, 0.72487336)
+colors = PackedColorArray(0.21604472, 0.21604466, 0.21604472, 1, 1, 1, 1, 1)
+
+[node name="EnemySpawner" type="Marker2D" unique_id=412981458 groups=["Spawners"]]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_adwfq")
+enemy_types = Array[PackedScene]([ExtResource("2_7kdbv"), ExtResource("3_abhyb")])
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=537429382]
+autostart = true
+
+[node name="RiseParticle" type="CPUParticles2D" parent="." unique_id=2014655968]
+emitting = false
+amount = 100
+lifetime = 1.5
+speed_scale = 1.5
+randomness = 0.61
+emission_shape = 1
+emission_sphere_radius = 74.58
+direction = Vector2(0, 0)
+spread = 143.56
+gravity = Vector2(50, -100)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angular_velocity_min = 30.0
+angular_velocity_max = 60.0
+orbit_velocity_max = 0.3
+linear_accel_min = 10.0
+linear_accel_max = 30.0
+scale_amount_min = 8.0
+scale_amount_max = 20.0
+color = Color(0.62668604, 0.53525496, 0.90923345, 1)
+color_initial_ramp = SubResource("Gradient_04dxk")
+
+[node name="ExplosionParticle" type="CPUParticles2D" parent="." unique_id=416207084]
+emitting = false
+amount = 100
+lifetime = 2.3
+one_shot = true
+speed_scale = 3.94
+explosiveness = 1.0
+randomness = 0.61
+emission_shape = 1
+emission_sphere_radius = 84.86
+particle_flag_align_y = true
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 70.0
+linear_accel_max = 10.0
+scale_amount_min = 15.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_5i7ya")
+color = Color(0.62668604, 0.53525496, 0.90923345, 1)
+color_ramp = SubResource("Gradient_7kdbv")
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
