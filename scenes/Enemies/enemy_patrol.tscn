@@ -11,6 +11,7 @@ size = Vector2(112, 120)
 size = Vector2(122.5, 122.5)
 
 [node name="EnemyPatrol" type="CharacterBody2D" unique_id=941073137 groups=["Enemies"]]
+scale = Vector2(0.4, 0.4)
 collision_layer = 4
 script = ExtResource("1_25k3p")
 
