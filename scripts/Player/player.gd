@@ -75,8 +75,8 @@ func trigger_invulnerability() -> void :
 	is_invulnerable = false
 
 func die() -> void :
-	# Add visuals and connect to GameManager
-	queue_free()
+	# TODO : Add visuals and connect to GameManager
+	GameManager.register_death()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("DamageDealer") :
