@@ -18,7 +18,7 @@ func start_new_game() -> void:
 
 func register_death() -> void :
 	total_deaths += 1
-	# add scene transition with juice
+	# TODO : add scene transition with juice
 	get_tree().reload_current_scene()
 
 func win_game() -> void :
@@ -36,10 +36,10 @@ func toggle_pause() -> void:
 	
 	if new_pause_state:
 		print("Jogo Pausado - Abrir UI de Pause")
-		#  exibe a Tela de Pause
+		PauseMenu.show_pause_menu()
 	else:
 		print("Jogo Retomado")
-		#  esconde a Tela de Pause
+		PauseMenu.hide_pause_menu()
 
 func get_formated_time() -> String:
 	var minutes := int(total_time) / 60
