@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://cu45t1wn08u3l"]
+
+[ext_resource type="Script" uid="uid://cy20jaxyytcfh" path="res://scripts/Ui/hud.gd" id="1_d60kb"]
+[ext_resource type="Texture2D" uid="uid://nhnoa8xmqvk" path="res://assets/ui/progress.png" id="1_i701c"]
+[ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="2_d60kb"]
+
+[node name="Hud" type="Control" unique_id=963638941]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d60kb")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=516821759]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1927964842]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="lifes" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=882505534]
+modulate = Color(1, 0.20999998, 0.20999998, 1)
+custom_minimum_size = Vector2(130, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -55
+alignment = 1
+
+[node name="life1" type="TextureRect" parent="MarginContainer/HBoxContainer/lifes" unique_id=658376953]
+custom_maximum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_i701c")
+
+[node name="life2" type="TextureRect" parent="MarginContainer/HBoxContainer/lifes" unique_id=1387861140]
+custom_maximum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_i701c")
+
+[node name="life3" type="TextureRect" parent="MarginContainer/HBoxContainer/lifes" unique_id=137446210]
+custom_maximum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_i701c")
+
+[node name="time_and_deaths" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1432890757]
+custom_minimum_size = Vector2(50, 60)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+alignment = 1
+
+[node name="deaths_container" type="HBoxContainer" parent="MarginContainer/HBoxContainer/time_and_deaths" unique_id=353649206]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 2
+
+[node name="deaths" type="Label" parent="MarginContainer/HBoxContainer/time_and_deaths/deaths_container" unique_id=1283254104]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 25
+text = "1"
+
+[node name="skull_icon" type="TextureRect" parent="MarginContainer/HBoxContainer/time_and_deaths/deaths_container" unique_id=167172344]
+custom_maximum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("2_d60kb")
+
+[node name="time_count" type="Label" parent="MarginContainer/HBoxContainer/time_and_deaths" unique_id=1382358759]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "00:00"
+horizontal_alignment = 1

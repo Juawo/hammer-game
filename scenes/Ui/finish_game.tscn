@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://cd6ien5dwnu0l"]
+
+[ext_resource type="Script" uid="uid://df5tneuoaf0wf" path="res://scripts/Ui/finish_game.gd" id="1_eb6nq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwrrl"]
+bg_color = Color(0.13812661, 0.13812664, 0.13812658, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="FinishGame" type="Control" unique_id=1636241272]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eb6nq")
+
+[node name="background" type="ColorRect" parent="." unique_id=466693153]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.22, 0.22, 0.22, 0.67058825)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1482622216]
+custom_minimum_size = Vector2(350, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = -100.5
+offset_right = 175.0
+offset_bottom = 100.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="title" type="Label" parent="VBoxContainer" unique_id=814168550]
+layout_mode = 2
+theme_override_font_sizes/font_size = 35
+text = "FINISH GAME!"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1399520505]
+custom_minimum_size = Vector2(260, 140)
+custom_maximum_size = Vector2(260, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_fwrrl")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=857997809]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=711366202]
+layout_mode = 2
+alignment = 1
+
+[node name="time" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1632357009]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = -5
+
+[node name="time_title" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/time" unique_id=691687222]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.67
+theme_override_font_sizes/font_size = 10
+text = "TIME"
+horizontal_alignment = 1
+
+[node name="time_count" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/time" unique_id=956939617]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.67
+theme_override_font_sizes/font_size = 25
+text = "01:00 "
+horizontal_alignment = 1
+
+[node name="deaths" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2132114651]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 80
+
+[node name="deaths_title" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/deaths" unique_id=1727658601]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 15
+text = "Deaths"
+
+[node name="deaths_count" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/deaths" unique_id=1348616759]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "10x"
+
+[node name="return_btn" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1535923561]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 10
+text = "Return to Main Menu"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/return_btn" to="." method="_on_return_btn_pressed"]
