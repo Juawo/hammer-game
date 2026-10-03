@@ -3,7 +3,10 @@ extends Node
 var win_game_scene := load("res://scripts/Levels/level_base.gd")
 var total_deaths := 0
 var total_time := 0.0
-var is_run_active := false
+var is_run_active := true
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
 
 func _process(delta: float) -> void:
 	if is_run_active :
