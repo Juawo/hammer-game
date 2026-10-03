@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bfbxyyynmvlsq"]
+
+[ext_resource type="Texture2D" uid="uid://nhnoa8xmqvk" path="res://assets/ui/progress.png" id="1_tqshd"]
+[ext_resource type="Script" uid="uid://3f7n1vkosrqy" path="res://scripts/Ui/main_menu.gd" id="1_vbbsv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbbsv"]
+bg_color = Color(0.20405525, 0.20405528, 0.20405513, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.8804189, 0.88041896, 0.8804188, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="MainMenu" type="Control" unique_id=1210233723]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vbbsv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=538348795]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.41052303, 0.41052312, 0.41052294, 0.3529412)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=667745579]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=650974723]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1683569720]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2102674152]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 40
+text = "Sledgehopper"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=217535176]
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_vbbsv")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer" unique_id=1301932536]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1953908365]
+layout_mode = 2
+
+[node name="play_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=300569808]
+layout_mode = 2
+text = "PLAY"
+flat = true
+
+[node name="exit_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=204747304]
+layout_mode = 2
+text = "EXIT"
+flat = true
+
+[node name="logo" type="TextureRect" parent="MarginContainer" unique_id=745135273]
+custom_maximum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("1_tqshd")
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/exit_btn" to="." method="_on_exit_btn_pressed"]

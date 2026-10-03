@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Hammer Game"
-run/main_scene="uid://pti5yq2b0qw8"
+run/main_scene="uid://bfbxyyynmvlsq"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*uid://ctmjdp5nxfect"
+PauseMenu="*uid://2jawntsy4yes"
 
 [display]
 
