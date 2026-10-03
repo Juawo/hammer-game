@@ -6,6 +6,7 @@ class_name LevelBase
 @onready var label: Label = $CanvasLayer/Label
 
 @export var max_enemies_allowed := 10
+@export var next_level : PackedScene
 
 var current_enemies := 0
 var is_escaping := false
@@ -53,3 +54,7 @@ func update_spawners_generation(new_interval: float) -> void:
 func _on_level_finished() -> void :
 	print("NEXT LEVEL!")
 	# add level transition / add juice/animation
+	if next_level :
+		get_tree().change_scene_to_packed(next_level)
+	else :
+		GameManager.win_game()
