@@ -3,7 +3,6 @@ class_name LevelBase
 
 @onready var breakable_wall: StaticBody2D = $Environment/BreakableWall
 @onready var level_exit: Area2D = $Environment/LevelExit
-@onready var label: Label = $CanvasLayer/Label
 
 @export var max_enemies_allowed := 10
 @export var next_level : PackedScene
@@ -18,11 +17,13 @@ func _ready() -> void:
 		
 	if level_exit:
 		level_exit.player_entered_exit.connect(_on_level_finished)
+	
+	Events.level_started.emit()
 
 func can_spawn_enemy() -> bool :
 	return current_enemies < max_enemies_allowed
 
-func _on_enemy_died() -> void :
+func _on_enemy_died() -> void : 
 	current_enemies -= 1
 
 func register_enemy(enemy: Node) -> void :
@@ -40,9 +41,6 @@ func trigger_escape_sequence() -> void :
 	max_enemies_allowed *= 2
 	level_exit.switch_disable_exit()
 	update_spawners_generation(1.5)
-	label.visible = true
-	var tween = create_tween().tween_property(label, "scale", Vector2(1.5,1.5), 1)
-	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_ELASTIC)
 
 func update_spawners_generation(new_interval: float) -> void:
 	var spawners = get_tree().get_nodes_in_group("Spawners")
@@ -54,6 +52,7 @@ func update_spawners_generation(new_interval: float) -> void:
 func _on_level_finished() -> void :
 	print("NEXT LEVEL!")
 	# add level transition / add juice/animation
+	
 	if next_level :
 		get_tree().change_scene_to_packed(next_level)
 	else :
