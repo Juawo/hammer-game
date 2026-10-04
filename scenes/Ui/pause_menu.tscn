@@ -13,28 +13,22 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="PauseMenu" type="Control" unique_id=1351775281]
+[node name="PauseMenu" type="CanvasLayer" unique_id=1607174874]
 process_mode = 3
+layer = 2
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("1_i8o4h")
 
 [node name="background" type="ColorRect" parent="." unique_id=949774937]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.23, 0.23, 0.23, 0.69411767)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1223464500]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,6 +42,7 @@ theme_override_constants/margin_bottom = 70
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=601546530]
 z_index = 5
 layout_mode = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_04dxk")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=129008630]
@@ -65,6 +60,7 @@ alignment = 1
 layout_mode = 2
 size_flags_vertical = 2
 size_flags_stretch_ratio = 0.67
+mouse_filter = 1
 theme_override_font_sizes/font_size = 35
 text = "PAUSED"
 horizontal_alignment = 1
