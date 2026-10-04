@@ -59,9 +59,10 @@ func set_hammer_charging(is_charging : bool) -> void :
 func take_damage(value : int) -> void :
 	if is_invulnerable :
 		return
+		
 	current_health -= value
 	label.text = "life : " + str(current_health)
-	
+	Events.player_health_changed.emit(current_health)
 	if current_health <= 0 :
 		die()
 	else :
