@@ -68,7 +68,7 @@ alignment = 2
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 25
-text = "1"
+text = "0"
 
 [node name="skull_icon" type="TextureRect" parent="MarginContainer/HBoxContainer/time_and_deaths/deaths_container" unique_id=167172344]
 custom_maximum_size = Vector2(35, 35)

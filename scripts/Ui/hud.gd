@@ -4,6 +4,12 @@ extends Control
 @onready var deaths: Label = $MarginContainer/HBoxContainer/time_and_deaths/deaths_container/deaths
 @onready var time_count: Label = $MarginContainer/HBoxContainer/time_and_deaths/time_count
 
+func _ready() -> void:
+	Events.player_health_changed.connect(update_life_visual)
+	update_deaths(GameManager.total_deaths)
+
+func _process(_delta: float) -> void:
+	update_time_count(GameManager.get_formated_time())
 
 func update_life_visual(new_life_count: int) -> void:
 	var lifes_nodes = lifes.get_children()
