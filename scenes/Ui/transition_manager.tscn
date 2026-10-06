@@ -5,8 +5,12 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_04dxk"]
 shader = ExtResource("2_tmk10")
-shader_parameter/progress = 0.358000017005
-shader_parameter/diamondPixelSize = 60.0
+shader_parameter/progress = 0.41200001957
+shader_parameter/multiplier = 2.842000087495
+shader_parameter/angle = 36.00000171
+shader_parameter/anchor = Vector2(0.5, 0.5)
+shader_parameter/anchorOffset = 1.0
+shader_parameter/diamondPixelSize = 40.0
 
 [node name="TransitionManager" type="CanvasLayer" unique_id=531333814]
 layer = 100
