@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="Hammer Game"
-run/main_scene="uid://pti5yq2b0qw8"
+run/main_scene="uid://bfbxyyynmvlsq"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameManager="*uid://ctmjdp5nxfect"
+Events="*uid://c6c7aug2b2u77"
+PauseMenu="*uid://2jawntsy4yes"
+TransitionManager="*uid://hifxn5sdl4et"
 
 [display]
 
@@ -25,7 +28,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

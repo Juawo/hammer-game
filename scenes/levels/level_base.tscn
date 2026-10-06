@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cai268m7e08xa" path="res://scenes/Player/player.tscn" id="4_d61h5"]
 [ext_resource type="PackedScene" uid="uid://52rxk6v26a2i" path="res://scenes/levels/breakable_wall.tscn" id="5_dje0g"]
 [ext_resource type="PackedScene" uid="uid://bgkdiiads01ar" path="res://scenes/Enemies/enemy_spawner.tscn" id="7_g7p6o"]
+[ext_resource type="PackedScene" uid="uid://cu45t1wn08u3l" path="res://scenes/Ui/hud.tscn" id="9_ynct0"]
 
 [sub_resource type="TileSet" id="TileSet_04dxk"]
 
@@ -74,7 +75,7 @@ texture = ExtResource("3_6cjw3")
 shape = SubResource("RectangleShape2D_dje0g")
 
 [node name="LevelExit" parent="Environment" unique_id=724218559 instance=ExtResource("4_6cjw3")]
-position = Vector2(697, 299)
+position = Vector2(726, 300)
 scale = Vector2(4.453125, 4.3633165)
 
 [node name="BreakableWall" parent="Environment" unique_id=1804956141 instance=ExtResource("5_dje0g")]
@@ -100,10 +101,4 @@ position = Vector2(559, 76)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1117925686]
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=37490488]
-visible = false
-offset_left = 256.0
-offset_top = 117.0
-offset_right = 405.0
-offset_bottom = 140.0
-text = "GO TO NEXT LEVEL!"
+[node name="Hud" parent="CanvasLayer" unique_id=963638941 instance=ExtResource("9_ynct0")]

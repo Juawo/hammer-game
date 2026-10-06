@@ -11,7 +11,6 @@ var jump_modifier := 1.0
 const INVULNERABILITY_TIME = 2
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var label: Label = $Label
 
 var max_health = 3
 var current_health := 3
@@ -59,9 +58,9 @@ func set_hammer_charging(is_charging : bool) -> void :
 func take_damage(value : int) -> void :
 	if is_invulnerable :
 		return
+		
 	current_health -= value
-	label.text = "life : " + str(current_health)
-	
+	Events.player_health_changed.emit(current_health)
 	if current_health <= 0 :
 		die()
 	else :
@@ -75,8 +74,8 @@ func trigger_invulnerability() -> void :
 	is_invulnerable = false
 
 func die() -> void :
-	# Add visuals and connect to GameManager
-	queue_free()
+	# TODO : Add visuals and connect to GameManager
+	GameManager.register_death()
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("DamageDealer") :

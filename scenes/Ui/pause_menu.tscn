@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://2jawntsy4yes"]
+
+[ext_resource type="Script" uid="uid://3m2jr176ljx6" path="res://scripts/Ui/pause_menu.gd" id="1_i8o4h"]
+[ext_resource type="FontFile" uid="uid://8m5i3kgsh0vv" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Bold.ttf" id="2_bavom"]
+[ext_resource type="PackedScene" uid="uid://fvsdynmt1ymd" path="res://scenes/Ui/button_option_base.tscn" id="3_bavom"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04dxk"]
+bg_color = Color(0.13812661, 0.13812664, 0.13812658, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 1
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1607174874]
+process_mode = 3
+layer = 2
+visible = false
+script = ExtResource("1_i8o4h")
+
+[node name="background" type="ColorRect" parent="." unique_id=949774937]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.23, 0.23, 0.23, 0.69411767)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1223464500]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(320, 180)
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 160
+theme_override_constants/margin_bottom = 70
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=601546530]
+z_index = 5
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_04dxk")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer" unique_id=129008630]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer" unique_id=495593853]
+layout_mode = 2
+alignment = 1
+
+[node name="title" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1974786392]
+layout_mode = 2
+size_flags_vertical = 2
+size_flags_stretch_ratio = 0.67
+mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_bavom")
+theme_override_font_sizes/font_size = 35
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="buttons" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1282079427]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="back_btn" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/buttons" unique_id=1457734160 instance=ExtResource("3_bavom")]
+layout_mode = 2
+text = "BACK TO GAME"
+
+[node name="return_btn" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/buttons" unique_id=682450180 instance=ExtResource("3_bavom")]
+layout_mode = 2
+text = "RETURN TO MAIN MENU"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/buttons/back_btn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/buttons/return_btn" to="." method="_on_return_btn_pressed"]
