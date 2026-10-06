@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://fvsdynmt1ymd"]
+
+[ext_resource type="FontFile" uid="uid://brvvr62vlc34w" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Regular.ttf" id="1_8r7p6"]
+[ext_resource type="Script" uid="uid://d3rd1vntopc4w" path="res://scripts/Ui/button_option_base.gd" id="1_w8cvv"]
+
+[node name="ButtonOptionBase" type="Button" unique_id=1457734160]
+offset_right = 8.0
+offset_bottom = 8.0
+pivot_offset = Vector2(4, 4)
+theme_override_fonts/font = ExtResource("1_8r7p6")
+flat = true
+script = ExtResource("1_w8cvv")
