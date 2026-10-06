@@ -11,7 +11,6 @@ var jump_modifier := 1.0
 const INVULNERABILITY_TIME = 2
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var label: Label = $Label
 
 var max_health = 3
 var current_health := 3
@@ -61,7 +60,6 @@ func take_damage(value : int) -> void :
 		return
 		
 	current_health -= value
-	label.text = "life : " + str(current_health)
 	Events.player_health_changed.emit(current_health)
 	if current_health <= 0 :
 		die()

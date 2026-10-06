@@ -9,12 +9,13 @@
 size = Vector2(128.5, 109)
 
 [node name="HammerPivot" type="Node2D" unique_id=144081329]
-z_index = 2
+z_index = 5
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_7yr1y")
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=1988051966]
 self_modulate = Color(1, 0.105882354, 0.7019608, 1)
+z_index = 5
 texture = ExtResource("2_cbcvn")
 
 [node name="progress_bar" type="TextureProgressBar" parent="sprite" unique_id=159211517]
