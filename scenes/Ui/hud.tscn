@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cy20jaxyytcfh" path="res://scripts/Ui/hud.gd" id="1_d60kb"]
 [ext_resource type="Texture2D" uid="uid://nhnoa8xmqvk" path="res://assets/ui/progress.png" id="1_i701c"]
 [ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="2_d60kb"]
+[ext_resource type="FontFile" uid="uid://brvvr62vlc34w" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Regular.ttf" id="3_8dv1p"]
 
 [node name="Hud" type="Control" unique_id=963638941]
 layout_mode = 3
@@ -67,6 +68,7 @@ alignment = 2
 [node name="deaths" type="Label" parent="MarginContainer/HBoxContainer/time_and_deaths/deaths_container" unique_id=1283254104]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_8dv1p")
 theme_override_font_sizes/font_size = 25
 text = "0"
 
@@ -78,5 +80,6 @@ texture = ExtResource("2_d60kb")
 [node name="time_count" type="Label" parent="MarginContainer/HBoxContainer/time_and_deaths" unique_id=1382358759]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_8dv1p")
 text = "00:00"
 horizontal_alignment = 1

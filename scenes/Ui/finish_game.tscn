@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cd6ien5dwnu0l"]
 
 [ext_resource type="Script" uid="uid://df5tneuoaf0wf" path="res://scripts/Ui/finish_game.gd" id="1_eb6nq"]
+[ext_resource type="FontFile" uid="uid://8m5i3kgsh0vv" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Bold.ttf" id="2_nlppt"]
+[ext_resource type="FontFile" uid="uid://brvvr62vlc34w" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Regular.ttf" id="3_b6fli"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwrrl"]
 bg_color = Color(0.13812661, 0.13812664, 0.13812658, 1)
@@ -50,6 +52,7 @@ alignment = 1
 
 [node name="title" type="Label" parent="VBoxContainer" unique_id=814168550]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_nlppt")
 theme_override_font_sizes/font_size = 35
 text = "FINISH GAME!"
 horizontal_alignment = 1
@@ -83,6 +86,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 size_flags_stretch_ratio = 0.67
+theme_override_fonts/font = ExtResource("3_b6fli")
 theme_override_font_sizes/font_size = 10
 text = "TIME"
 horizontal_alignment = 1
@@ -92,6 +96,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 size_flags_stretch_ratio = 0.67
+theme_override_fonts/font = ExtResource("2_nlppt")
 theme_override_font_sizes/font_size = 25
 text = "01:00 "
 horizontal_alignment = 1
@@ -105,18 +110,21 @@ theme_override_constants/separation = 80
 [node name="deaths_title" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/deaths" unique_id=1727658601]
 layout_mode = 2
 size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("3_b6fli")
 theme_override_font_sizes/font_size = 15
 text = "Deaths"
 
 [node name="deaths_count" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/deaths" unique_id=1348616759]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_b6fli")
 text = "10x"
 
 [node name="return_btn" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1535923561]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("3_b6fli")
 theme_override_font_sizes/font_size = 10
 text = "Return to Main Menu"
 flat = true

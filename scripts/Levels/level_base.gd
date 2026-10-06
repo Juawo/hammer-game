@@ -53,7 +53,8 @@ func _on_level_finished() -> void :
 	print("NEXT LEVEL!")
 	# add level transition / add juice/animation
 	
-	if next_level :
+	if next_level != null :
+		print("NO HAVE NEXT LEVEL")
 		get_tree().change_scene_to_packed(next_level)
 	else :
 		GameManager.win_game()

@@ -1,6 +1,6 @@
 extends Node
 
-var win_game_scene := load("res://scripts/Levels/level_base.gd")
+var win_game_scene := load("res://scenes/Ui/finish_game.tscn")
 var total_deaths := 0
 var total_time := 0.0
 var is_run_active := false
@@ -21,13 +21,14 @@ func start_new_game() -> void:
 func _on_level_started() -> void:
 	print("starded")
 	toggle_timer_count()
+	print("COUNT : ", is_run_active)
 	is_in_game = true
 
 func register_death() -> void :
 	# TODO : add scene transition with juice
 	total_deaths += 1
 	toggle_timer_count()
-	get_tree().reload_current_scene()
+	TransitionManager.transition_to_file(get_tree().current_scene.scene_file_path)
 
 func win_game() -> void :
 	# TODO :  add transition between scenes
