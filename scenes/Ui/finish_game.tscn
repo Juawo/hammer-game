@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://df5tneuoaf0wf" path="res://scripts/Ui/finish_game.gd" id="1_eb6nq"]
 [ext_resource type="FontFile" uid="uid://8m5i3kgsh0vv" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Bold.ttf" id="2_nlppt"]
 [ext_resource type="FontFile" uid="uid://brvvr62vlc34w" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Regular.ttf" id="3_b6fli"]
+[ext_resource type="PackedScene" uid="uid://fvsdynmt1ymd" path="res://scenes/Ui/button_option_base.tscn" id="4_b6fli"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwrrl"]
 bg_color = Color(0.13812661, 0.13812664, 0.13812658, 1)
@@ -14,6 +15,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+corner_detail = 1
 
 [node name="FinishGame" type="Control" unique_id=1636241272]
 layout_mode = 3
@@ -120,13 +122,9 @@ size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("3_b6fli")
 text = "10x"
 
-[node name="return_btn" type="Button" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1535923561]
+[node name="return_btn" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1457734160 instance=ExtResource("4_b6fli")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_fonts/font = ExtResource("3_b6fli")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 13
 text = "Return to Main Menu"
-flat = true
 
 [connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/return_btn" to="." method="_on_return_btn_pressed"]

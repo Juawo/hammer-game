@@ -1,6 +1,6 @@
 extends Node
 
-var win_game_scene := load("res://scenes/Ui/finish_game.tscn")
+var win_game_scene := "res://scenes/Ui/finish_game.tscn"
 var total_deaths := 0
 var total_time := 0.0
 var is_run_active := false
@@ -34,7 +34,7 @@ func win_game() -> void :
 	# TODO :  add transition between scenes
 	toggle_timer_count()
 	is_in_game = false
-	get_tree().change_scene_to_packed(win_game_scene)
+	TransitionManager.transition_to_file(win_game_scene)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause_game") and is_in_game:

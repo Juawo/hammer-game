@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://3m2jr176ljx6" path="res://scripts/Ui/pause_menu.gd" id="1_i8o4h"]
 [ext_resource type="FontFile" uid="uid://8m5i3kgsh0vv" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Bold.ttf" id="2_bavom"]
-[ext_resource type="FontFile" uid="uid://brvvr62vlc34w" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Regular.ttf" id="3_783sy"]
+[ext_resource type="PackedScene" uid="uid://fvsdynmt1ymd" path="res://scenes/Ui/button_option_base.tscn" id="3_bavom"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04dxk"]
 bg_color = Color(0.13812661, 0.13812664, 0.13812658, 1)
@@ -14,6 +14,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+corner_detail = 1
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1607174874]
 process_mode = 3
@@ -75,21 +76,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="back_btn" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/buttons" unique_id=569656674]
+[node name="back_btn" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/buttons" unique_id=1457734160 instance=ExtResource("3_bavom")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("3_783sy")
 text = "BACK TO GAME"
-flat = true
 
-[node name="return_btn" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/buttons" unique_id=1914937612]
+[node name="return_btn" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/buttons" unique_id=682450180 instance=ExtResource("3_bavom")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("3_783sy")
-text = "MAIN MENU"
-flat = true
+text = "RETURN TO MAIN MENU"
 
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/buttons/back_btn" to="." method="_on_back_btn_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/buttons/return_btn" to="." method="_on_return_btn_pressed"]

@@ -3,10 +3,9 @@ extends Control
 @onready var deaths_count: Label = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/deaths/deaths_count
 @onready var time_count: Label = $VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/time/time_count
 
-var main_menu_scene := load("res://scenes/Ui/main_menu.tscn")
+var main_menu_scene := "res://scenes/Ui/main_menu.tscn"
 
 func _ready() -> void:
-	# TODO : add animation when surge
 	deaths_count.text = "0x"
 	time_count.text = "00:00:00"
 	animate_results(GameManager.total_deaths, GameManager.total_time)
@@ -31,5 +30,4 @@ func _update_time_text(value: float) -> void:
 	time_count.text = "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
 
 func _on_return_btn_pressed() -> void:
-	# TODO : add transition here
-	get_tree().change_scene_to_packed(main_menu_scene)
+	TransitionManager.transition_to_file(main_menu_scene)

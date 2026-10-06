@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var main_menu_scene := load("res://scenes/Ui/main_menu.tscn")
+var main_menu_scene := "res://scenes/Ui/main_menu.tscn"
 @onready var main_container: MarginContainer = $MarginContainer
 @onready var bg: ColorRect = $background
 
@@ -28,9 +28,8 @@ func _on_back_btn_pressed() -> void:
 	GameManager.toggle_pause()
 
 func _on_return_btn_pressed() -> void:
-	# TODO : add transition here
 	get_tree().paused = false 
 	GameManager.is_in_game = false
 	
 	hide_pause_menu()
-	get_tree().change_scene_to_packed(main_menu_scene)
+	TransitionManager.transition_to_file(main_menu_scene)
