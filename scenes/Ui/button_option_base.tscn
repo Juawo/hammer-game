@@ -6,7 +6,6 @@
 [node name="ButtonOptionBase" type="Button" unique_id=1457734160]
 offset_right = 8.0
 offset_bottom = 8.0
-pivot_offset = Vector2(4, 4)
 theme_override_fonts/font = ExtResource("1_8r7p6")
 flat = true
 script = ExtResource("1_w8cvv")
