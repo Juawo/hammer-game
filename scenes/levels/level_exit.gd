@@ -12,4 +12,5 @@ func switch_disable_exit() -> void :
 	cpu_particles_2d.emitting = is_disabled
 
 func _on_body_entered(_body: Node2D) -> void:
-	player_entered_exit.emit()
+	if _body.is_in_group("Player"):
+		player_entered_exit.emit()

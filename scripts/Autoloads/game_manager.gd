@@ -19,19 +19,17 @@ func start_new_game() -> void:
 	total_time = 0.0
 
 func _on_level_started() -> void:
-	print("starded")
 	toggle_timer_count()
-	print("COUNT : ", is_run_active)
 	is_in_game = true
 
 func register_death() -> void :
 	# TODO : add scene transition with juice
+	Engine.time_scale = 1
 	total_deaths += 1
 	toggle_timer_count()
 	TransitionManager.transition_to_file(get_tree().current_scene.scene_file_path)
-
+	
 func win_game() -> void :
-	# TODO :  add transition between scenes
 	toggle_timer_count()
 	is_in_game = false
 	TransitionManager.transition_to_file(win_game_scene)
@@ -45,11 +43,9 @@ func toggle_pause() -> void:
 	get_tree().paused = new_pause_state
 	
 	if new_pause_state:
-		print("Jogo Pausado - Abrir UI de Pause")
 		toggle_timer_count()
 		PauseMenu.show_pause_menu()
 	else:
-		print("Jogo Retomado")
 		toggle_timer_count()
 		PauseMenu.hide_pause_menu()
 
