@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://ghalym7hf045"]
+
+[ext_resource type="Script" uid="uid://biqyhdpk2dws0" path="res://scripts/Levels/camera.gd" id="1_rtr5j"]
+
+[sub_resource type="Curve" id="Curve_04dxk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.52237666, 0.6328258), 0.0, 0.0, 0, 0, Vector2(0.7692902, 0.47208124), 0.0, 0.0, 0, 0, Vector2(0.9969136, 0.1252116), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_5i7ya"]
+offsets = PackedFloat32Array(0.3725324, 1)
+colors = PackedColorArray(0.46959704, 0.30904502, 0.3316476, 1, 0.37, 0.19684003, 0.17760001, 0.41568628)
+
+[node name="Camera" type="Camera2D" unique_id=909425961]
+script = ExtResource("1_rtr5j")
+
+[node name="DustParticle" type="CPUParticles2D" parent="." unique_id=241601333]
+position = Vector2(-1, -179)
+emitting = false
+amount = 25
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(380, 1)
+scale_amount_min = 6.0
+scale_amount_max = 12.0
+scale_amount_curve = SubResource("Curve_04dxk")
+color_initial_ramp = SubResource("Gradient_5i7ya")

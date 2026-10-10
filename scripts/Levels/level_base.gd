@@ -34,6 +34,7 @@ func register_enemy(enemy: Node) -> void :
 func trigger_wall_cracked_sequence() -> void:
 	max_enemies_allowed *= 2
 	update_spawners_generation(2.5)
+	Events.shake_camera.emit(15.0)
 
 # when the wall is destroyed | get the game the most frenetic momment
 func trigger_escape_sequence() -> void :
@@ -41,6 +42,8 @@ func trigger_escape_sequence() -> void :
 	max_enemies_allowed *= 2
 	level_exit.switch_disable_exit()
 	update_spawners_generation(1.5)
+	Events.shake_camera.emit(30.0)
+	
 
 func update_spawners_generation(new_interval: float) -> void:
 	var spawners = get_tree().get_nodes_in_group("Spawners")
