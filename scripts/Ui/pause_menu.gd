@@ -3,6 +3,7 @@ extends CanvasLayer
 var main_menu_scene := "res://scenes/Ui/main_menu.tscn"
 @onready var main_container: MarginContainer = $MarginContainer
 @onready var bg: ColorRect = $background
+const UI_CLICK = preload("uid://bamv7qaitt0vj")
 
 func show_pause_menu() -> void:
 	show()
@@ -25,11 +26,13 @@ func hide_pause_menu() -> void:
 	hide()
 
 func _on_back_btn_pressed() -> void:
+	SoundManager.play_sfx(UI_CLICK, 0.1)
 	GameManager.toggle_pause()
 
 func _on_return_btn_pressed() -> void:
 	get_tree().paused = false 
 	GameManager.is_in_game = false
-	
+	SoundManager.play_sfx(UI_CLICK, 0.1)
+
 	hide_pause_menu()
 	TransitionManager.transition_to_file(main_menu_scene)

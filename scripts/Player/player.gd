@@ -13,6 +13,10 @@ const INVULNERABILITY_TIME = 1.5
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
+@onready var jump_sfx: AudioStreamPlayer2D = $JumpSFX
+@onready var hurt_sfx: AudioStreamPlayer2D = $HurtSFX
+@onready var death_sfx: AudioStreamPlayer2D = $DeathSFX
+
 var max_health = 3
 var current_health := 3
 var is_invulnerable := false
@@ -31,6 +35,8 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = (JUMP_VELOCITY * jump_modifier)
+		jump_sfx.pitch_scale = randf_range(0.9, 2.1)
+		jump_sfx.play()
 		
 	var direction := Input.get_axis("left", "right")
 	if direction:
@@ -72,6 +78,8 @@ func take_damage(value : int) -> void :
 	if current_health <= 0 :
 		die()
 	else :
+		hurt_sfx.pitch_scale = randf_range(0.9, 1.1)
+		hurt_sfx.play()
 		trigger_invulnerability(INVULNERABILITY_TIME)
 
 func trigger_invulnerability(duration: float) -> void:
@@ -90,10 +98,10 @@ func trigger_invulnerability(duration: float) -> void:
 	is_invulnerable = false
 
 func die() -> void :
-	# TODO : Add visuals
 	if is_dead :
 		return
 	is_dead = true
+	death_sfx.play()
 	await die_animation()
 	GameManager.register_death()
 

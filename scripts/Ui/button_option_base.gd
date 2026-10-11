@@ -1,17 +1,20 @@
 extends Button
 
 var tween: Tween
+const UI_HOVER = preload("uid://yymimu4x17fn")
 
 func _ready() -> void:
 	mouse_entered.connect(_on_hover)
 	mouse_exited.connect(_on_exit)
-	focus_entered.connect(_on_hover) # Para navegação por teclado
+	focus_entered.connect(_on_hover)
 	focus_exited.connect(_on_exit)
 
 func _on_hover() -> void:
 	pivot_offset = size / 2.0 
 	if tween: tween.kill()
 	tween = create_tween().set_parallel(true).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	
+	SoundManager.play_sfx(UI_HOVER, 0.3)
 	
 	# Cresce o botão
 	tween.tween_property(self, "scale", Vector2(1.15, 1.15), 0.2)

@@ -36,5 +36,4 @@ func take_damage(amount: int) -> void:
 		die()
 
 func die() -> void:
-	# Som de explosão arcade e pontuação
 	queue_free()
