@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="2_cbcvn"]
 [ext_resource type="Texture2D" uid="uid://nhnoa8xmqvk" path="res://assets/ui/progress.png" id="3_prrad"]
 [ext_resource type="Texture2D" uid="uid://8h0qnb5ryddb" path="res://assets/ui/outline.png" id="4_pkpup"]
+[ext_resource type="AudioStream" uid="uid://bwu2wkb34peod" path="res://assets/audio/SFX/hammer_charging.ogg" id="5_16kqp"]
+[ext_resource type="AudioStream" uid="uid://bo6wccrckgb2i" path="res://assets/audio/SFX/hammer_hit.wav" id="6_2v80n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
 size = Vector2(128.5, 109)
@@ -42,3 +44,12 @@ position = Vector2(-0.75, -0.5)
 shape = SubResource("RectangleShape2D_04dxk")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1413554373]
+
+[node name="ChargingSFX" type="AudioStreamPlayer2D" parent="." unique_id=2132341251]
+stream = ExtResource("5_16kqp")
+bus = &"SFX"
+
+[node name="HitSFX" type="AudioStreamPlayer2D" parent="." unique_id=968814493]
+stream = ExtResource("6_2v80n")
+volume_db = -2.499
+bus = &"SFX"

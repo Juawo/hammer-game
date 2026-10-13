@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b61jbnnbx07vq" path="res://scripts/Levels/breakable_wall.gd" id="1_fgyny"]
 [ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="1_v1n1t"]
+[ext_resource type="AudioStream" uid="uid://v7l1iud2c3ai" path="res://assets/audio/SFX/breakablewall_cracked.wav" id="3_rryx4"]
+[ext_resource type="AudioStream" uid="uid://crr5tcylxr6wb" path="res://assets/audio/SFX/breakablewall_broken.wav" id="4_ty7rr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
 size = Vector2(117, 121)
@@ -28,5 +30,13 @@ collision_mask = 2
 position = Vector2(-0.5, -1.5)
 shape = SubResource("RectangleShape2D_5i7ya")
 debug_color = Color(0.7677736, 0.40907738, 0.48687822, 0.41960785)
+
+[node name="CrackedSFX" type="AudioStreamPlayer2D" parent="." unique_id=974617326]
+stream = ExtResource("3_rryx4")
+bus = &"SFX"
+
+[node name="BrokenSFX" type="AudioStreamPlayer2D" parent="." unique_id=199791352]
+stream = ExtResource("4_ty7rr")
+bus = &"SFX"
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

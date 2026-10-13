@@ -3,6 +3,7 @@ extends EnemyBase
 @onready var wall_check: RayCast2D = $wall_check
 @onready var sprite_2d: Sprite2D = $sprite
 @onready var shoot_timer: Timer = $shoot_timer
+@onready var shoot_sfx: AudioStreamPlayer2D = $ShootSFX
 
 var direction := 1.0
 var projectile_scene : PackedScene = preload("uid://do7cj3138njd8")
@@ -47,6 +48,8 @@ func shoot(shoot_dir : float) -> void :
 	
 	if projectile.has_method("set_direction") :
 		projectile.set_direction(Vector2(shoot_dir, 0))
+	
+	shoot_sfx.play()
 	
 func _on_shoot_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") :

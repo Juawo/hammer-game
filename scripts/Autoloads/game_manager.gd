@@ -17,6 +17,10 @@ func _process(delta: float) -> void:
 func start_new_game() -> void:
 	total_deaths = 0
 	total_time = 0.0
+	
+	const GAME_MUSIC = preload("uid://doshqt83p03i2")
+
+	SoundManager.play_music(GAME_MUSIC)
 
 func _on_level_started() -> void:
 	toggle_timer_count()

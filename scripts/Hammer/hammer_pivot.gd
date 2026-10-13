@@ -18,6 +18,8 @@ var ui_tween : Tween
 @onready var hammer_area: Area2D = $hammer_area
 @onready var progress_bar: TextureProgressBar = $sprite/progress_bar
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
+@onready var charging_sfx: AudioStreamPlayer2D = $ChargingSFX
+@onready var hit_sfx: AudioStreamPlayer2D = $HitSFX
 
 var player : CharacterBody2D
 
@@ -55,6 +57,8 @@ func _physics_process(delta: float) -> void:
 			orbit_speed_modifier = 0.3
 			player.set_hammer_charging(is_charging)
 			
+			charging_sfx.play()
+			
 			if ui_tween:
 				ui_tween.kill()
 			
@@ -69,6 +73,8 @@ func _physics_process(delta: float) -> void:
 		orbit_speed_modifier = 1
 		player.set_hammer_charging(is_charging)
 		
+		charging_sfx.stop()
+		
 		if ui_tween:
 			ui_tween.kill()
 	
@@ -82,7 +88,6 @@ func _physics_process(delta: float) -> void:
 	
 func execute_strike() -> void:
 	var charge_ratio = current_charge / MAX_CHARGE_TIME
-	print(charge_ratio)
 	if charge_ratio < MIN_CHARGE_TIME: return
 	
 	var hit_something := false
@@ -96,6 +101,9 @@ func execute_strike() -> void:
 				body.take_damage(damage)
 	
 	if hit_something:
+		hit_sfx.pitch_scale = randf_range(0.8, 1.2)
+		hit_sfx.play()
+		
 		var strike_direction := Vector2.RIGHT.rotated(rotation)
 		var knockback_direction := -strike_direction
 		var applied_force = MAX_KNOCKBACK_FORCE * charge_ratio

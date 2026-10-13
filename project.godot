@@ -15,12 +15,17 @@ run/main_scene="uid://bfbxyyynmvlsq"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://qdkapwmt87q7"
+
 [autoload]
 
 GameManager="*uid://ctmjdp5nxfect"
 Events="*uid://c6c7aug2b2u77"
 PauseMenu="*uid://2jawntsy4yes"
 TransitionManager="*uid://hifxn5sdl4et"
+SoundManager="*uid://rwfqtyeok2vn"
 
 [display]
 
@@ -97,4 +102,3 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-2d/snap/snap_2d_transforms_to_pixel=true

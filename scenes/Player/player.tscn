@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://vhf8hmwv80g2" path="res://scripts/Player/player.gd" id="1_1kbk7"]
 [ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="1_cyojo"]
 [ext_resource type="PackedScene" uid="uid://b5jyjscbe2oqg" path="res://scenes/Hammer/hammer_pivot.tscn" id="3_gqjuk"]
+[ext_resource type="AudioStream" uid="uid://djdrp3qdgev27" path="res://assets/audio/SFX/player_jump.wav" id="4_hvfru"]
+[ext_resource type="AudioStream" uid="uid://bn0r8p8wbkmfy" path="res://assets/audio/SFX/player_hurt.mp3" id="4_uiqp4"]
+[ext_resource type="AudioStream" uid="uid://40ckado4qm6h" path="res://assets/audio/SFX/player_death.wav" id="5_hvfru"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04dxk"]
 radius = 40.0
@@ -37,5 +40,20 @@ z_index = 2
 
 [node name="HammerPivot2" parent="HammerPivot" unique_id=144081329 instance=ExtResource("3_gqjuk")]
 position = Vector2(0, 1)
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="." unique_id=1250624226]
+stream = ExtResource("4_hvfru")
+volume_db = -5.094
+bus = &"SFX"
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="." unique_id=1112979119]
+stream = ExtResource("4_uiqp4")
+volume_db = -10.046
+bus = &"SFX"
+
+[node name="DeathSFX" type="AudioStreamPlayer2D" parent="." unique_id=688386445]
+stream = ExtResource("5_hvfru")
+volume_db = -11.603
+bus = &"SFX"
 
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]

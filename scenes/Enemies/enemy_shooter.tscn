@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bodyyiis5c67k" path="res://scripts/Enemies/enemy_shooter.gd" id="1_4uixn"]
 [ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="2_83hif"]
 [ext_resource type="PackedScene" uid="uid://r04tfpinw5mt" path="res://scenes/hitbox.tscn" id="3_83hif"]
+[ext_resource type="AudioStream" uid="uid://hta2vyj2jwps" path="res://assets/audio/SFX/enemy2_shoot.wav" id="5_75uos"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
 size = Vector2(120, 107.19271)
@@ -49,6 +50,10 @@ debug_color = Color(0.7485352, 0.39552584, 0.6242434, 0.41960785)
 position = Vector2(-0.25, -0.75)
 shape = SubResource("RectangleShape2D_y00xt")
 debug_color = Color(0.64262533, 0.40566707, 0.85104734, 0.41960785)
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="." unique_id=599855090]
+stream = ExtResource("5_75uos")
+area_mask = 240
 
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="body_entered" from="shoot_area" to="." method="_on_shoot_area_body_entered"]

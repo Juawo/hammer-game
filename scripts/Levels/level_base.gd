@@ -7,6 +7,7 @@ class_name LevelBase
 @export var max_enemies_allowed := 10
 @export var next_level : PackedScene
 
+
 var current_enemies := 0
 var is_escaping := false
 

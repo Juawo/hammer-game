@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://3f7n1vkosrqy" path="res://scripts/Ui/main_menu.gd" id="1_vbbsv"]
 [ext_resource type="FontFile" uid="uid://8m5i3kgsh0vv" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Bold.ttf" id="2_k81t8"]
-[ext_resource type="Texture2D" uid="uid://b0igjpgdbcqib" path="res://assets/ui/new_logo.png" id="2_vbbsv"]
 [ext_resource type="PackedScene" uid="uid://fvsdynmt1ymd" path="res://scenes/Ui/button_option_base.tscn" id="3_y4mj2"]
+[ext_resource type="PackedScene" uid="uid://h5abb7bat8um" path="res://scenes/Ui/logo_button.tscn" id="4_y4mj2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbbsv"]
 bg_color = Color(0.20405525, 0.20405528, 0.20405513, 1)
@@ -92,13 +92,10 @@ text = "PLAY"
 layout_mode = 2
 text = "EXIT"
 
-[node name="logo" type="TextureRect" parent="MarginContainer" unique_id=745135273]
-texture_filter = 1
+[node name="LogoButton" parent="MarginContainer" unique_id=1128953030 instance=ExtResource("4_y4mj2")]
 custom_maximum_size = Vector2(60, 60)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-texture = ExtResource("2_vbbsv")
+offset_transform_enabled = true
 stretch_mode = 5
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/play_btn" to="." method="_on_play_btn_pressed"]

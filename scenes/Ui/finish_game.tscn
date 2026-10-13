@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://8m5i3kgsh0vv" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Bold.ttf" id="2_nlppt"]
 [ext_resource type="FontFile" uid="uid://brvvr62vlc34w" path="res://assets/ui/fonts/Silkscreen/Silkscreen-Regular.ttf" id="3_b6fli"]
 [ext_resource type="PackedScene" uid="uid://fvsdynmt1ymd" path="res://scenes/Ui/button_option_base.tscn" id="4_b6fli"]
+[ext_resource type="AudioStream" uid="uid://6j0orkyyybjm" path="res://assets/audio/SFX/UI_count.wav" id="5_b5vrx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fwrrl"]
 bg_color = Color(0.13812661, 0.13812664, 0.13812658, 1)
@@ -126,5 +127,9 @@ text = "10x"
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "Return to Main Menu"
+
+[node name="CountSFX" type="AudioStreamPlayer" parent="." unique_id=1127650802]
+stream = ExtResource("5_b5vrx")
+volume_db = -10.645
 
 [connection signal="pressed" from="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/return_btn" to="." method="_on_return_btn_pressed"]
