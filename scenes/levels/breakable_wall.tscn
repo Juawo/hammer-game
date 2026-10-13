@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://52rxk6v26a2i"]
+
+[ext_resource type="Script" uid="uid://b61jbnnbx07vq" path="res://scripts/Levels/breakable_wall.gd" id="1_fgyny"]
+[ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="1_v1n1t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
+size = Vector2(117, 121)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i7ya"]
+size = Vector2(135, 133)
+
+[node name="BreakableWall" type="StaticBody2D" unique_id=1804956141]
+collision_mask = 0
+script = ExtResource("1_fgyny")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2136850293]
+texture = ExtResource("1_v1n1t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=944104145]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_04dxk")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=715793167]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=226045513]
+position = Vector2(-0.5, -1.5)
+shape = SubResource("RectangleShape2D_5i7ya")
+debug_color = Color(0.7677736, 0.40907738, 0.48687822, 0.41960785)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

@@ -48,6 +48,8 @@ func _physics_process(delta: float) -> void:
 	progress_bar.global_position = sprite.global_position + ui_offset - (progress_bar.pivot_offset * progress_bar.scale)
 	
 	if Input.is_action_pressed("charge_hammer"):
+		if player.is_dead :
+			return
 		if not is_charging:
 			is_charging = true
 			orbit_speed_modifier = 0.3
