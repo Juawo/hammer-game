@@ -66,3 +66,6 @@ func _on_shoot_area_body_exited(body: Node2D) -> void:
 func _on_shoot_timer_timeout() -> void:
 	shoot(stored_shoot_direction)
 	is_preparing_to_shoot = false
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

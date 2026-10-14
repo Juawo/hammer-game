@@ -17,5 +17,7 @@ func process_enemy_movement(_delta: float) -> void :
 		direction *= -1.0
 		wall_check.target_position.x *= -1.0
 		sprite_2d.flip_h = direction > 0
-		
 	velocity.x = direction * speed
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()
