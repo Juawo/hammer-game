@@ -1,6 +1,8 @@
 extends Control
 
-var first_level :=  "res://scenes/levels/level_base.tscn"
+const LEVEL_TUTORIAL = "res://scenes/levels/level_tutorial.tscn"
+const first_level = "res://scenes/levels/level_1.tscn"
+
 const MUSIC_1 = preload("res://assets/audio/Music/main-menu-music.ogg")
 const UI_CLICK = preload("uid://bamv7qaitt0vj")
 
@@ -18,3 +20,8 @@ func _on_exit_btn_pressed() -> void:
 
 func _on_logo_pressed() -> void:
 	OS.shell_open("https://www.instagram.com/funaxys/")
+
+
+func _on_tutorial_btn_2_pressed() -> void:
+	SoundManager.play_sfx(UI_CLICK, 0.1)
+	TransitionManager.transition_to_file(LEVEL_TUTORIAL)

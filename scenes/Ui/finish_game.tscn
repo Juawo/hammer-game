@@ -34,7 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.22, 0.22, 0.22, 0.67058825)
+color = Color(0.13333334, 0.1254902, 0.20392157, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1482622216]
 custom_minimum_size = Vector2(350, 200)
@@ -56,23 +56,22 @@ alignment = 1
 [node name="title" type="Label" parent="VBoxContainer" unique_id=814168550]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_nlppt")
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 24
 text = "FINISH GAME!"
 horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer" unique_id=1399520505]
-custom_minimum_size = Vector2(260, 140)
-custom_maximum_size = Vector2(260, -1)
+custom_minimum_size = Vector2(230, 130)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_fwrrl")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer" unique_id=857997809]
 layout_mode = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer" unique_id=711366202]
 layout_mode = 2
@@ -90,7 +89,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 2
 size_flags_stretch_ratio = 0.67
 theme_override_fonts/font = ExtResource("3_b6fli")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 12
 text = "TIME"
 horizontal_alignment = 1
 
@@ -100,7 +99,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 2
 size_flags_stretch_ratio = 0.67
 theme_override_fonts/font = ExtResource("2_nlppt")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 16
 text = "01:00 "
 horizontal_alignment = 1
 
@@ -114,18 +113,18 @@ theme_override_constants/separation = 80
 layout_mode = 2
 size_flags_horizontal = 2
 theme_override_fonts/font = ExtResource("3_b6fli")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 14
 text = "Deaths"
 
 [node name="deaths_count" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/deaths" unique_id=1348616759]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("3_b6fli")
+theme_override_font_sizes/font_size = 14
 text = "10x"
 
 [node name="return_btn" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1457734160 instance=ExtResource("4_b6fli")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 13
 text = "Return to Main Menu"
 
 [node name="CountSFX" type="AudioStreamPlayer" parent="." unique_id=1127650802]

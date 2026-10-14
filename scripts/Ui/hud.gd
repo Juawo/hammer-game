@@ -1,8 +1,11 @@
 extends Control
 
-@onready var lifes: HBoxContainer = $MarginContainer/HBoxContainer/lifes
-@onready var deaths: Label = $MarginContainer/HBoxContainer/time_and_deaths/deaths_container/deaths
-@onready var time_count: Label = $MarginContainer/HBoxContainer/time_and_deaths/time_count
+@onready var deaths: Label = $HBoxContainer/time_and_deaths/deaths_container/deaths
+@onready var time_count: Label = $HBoxContainer/time_and_deaths/time_count
+@onready var lifes: HBoxContainer = $HBoxContainer/lifes
+
+const EMPTY_LIFE = preload("uid://c3hnatlrmbast")
+const BLANK_LIFE = preload("uid://b078p2kjp7h01")
 
 func _ready() -> void:
 	Events.player_health_changed.connect(update_life_visual)
@@ -12,8 +15,12 @@ func _process(_delta: float) -> void:
 	update_time_count(GameManager.get_formated_time())
 
 func update_life_visual(new_life_count: int) -> void:
-	var lifes_nodes = lifes.get_children()
-	lifes_nodes[new_life_count].modulate = "#2424245c"
+		var lifes_nodes = lifes.get_children()
+		lifes_nodes[new_life_count].texture = BLANK_LIFE
+		Engine.time_scale = 0.1
+		await get_tree().create_timer(0.1).timeout
+		Engine.time_scale = 1
+		lifes_nodes[new_life_count].texture = EMPTY_LIFE
 
 func update_deaths(new_deaths_count: int) -> void:
 	deaths.text = str(new_deaths_count)
