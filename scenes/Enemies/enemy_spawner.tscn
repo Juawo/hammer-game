@@ -26,8 +26,8 @@ autostart = true
 
 [node name="RiseParticle" type="CPUParticles2D" parent="." unique_id=2014655968]
 emitting = false
-amount = 100
-lifetime = 1.5
+amount = 30
+lifetime = 1.2
 speed_scale = 1.5
 randomness = 0.61
 emission_shape = 1
@@ -42,15 +42,14 @@ angular_velocity_max = 60.0
 orbit_velocity_max = 0.3
 linear_accel_min = 10.0
 linear_accel_max = 30.0
-scale_amount_min = 8.0
-scale_amount_max = 20.0
+scale_amount_max = 5.0
 color = Color(0.62668604, 0.53525496, 0.90923345, 1)
 color_initial_ramp = SubResource("Gradient_04dxk")
 
 [node name="ExplosionParticle" type="CPUParticles2D" parent="." unique_id=416207084]
 emitting = false
-amount = 100
-lifetime = 2.3
+amount = 30
+lifetime = 1.2
 one_shot = true
 speed_scale = 3.94
 explosiveness = 1.0
@@ -64,8 +63,8 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 30.0
 initial_velocity_max = 70.0
 linear_accel_max = 10.0
-scale_amount_min = 15.0
-scale_amount_max = 30.0
+scale_amount_min = 3.0
+scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_5i7ya")
 color = Color(0.62668604, 0.53525496, 0.90923345, 1)
 color_ramp = SubResource("Gradient_7kdbv")

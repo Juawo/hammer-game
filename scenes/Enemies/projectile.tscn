@@ -7,20 +7,21 @@
 size = Vector2(26, 8)
 
 [node name="Projectile" type="Area2D" unique_id=1837883870 groups=["DamageDealer", "Projectiles"]]
+scale = Vector2(0.5, 0.5)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_kxe2v")
-
-[node name="sprite" type="Sprite2D" parent="." unique_id=411012275]
-modulate = Color(0.61270785, 0.5805285, 1, 1)
-position = Vector2(0, -5.9604645e-08)
-scale = Vector2(0.1953125, 0.0546875)
-texture = ExtResource("2_b3q82")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1544467961]
 position = Vector2(0, -3.5527137e-15)
 scale = Vector2(1, 0.99999994)
 shape = SubResource("RectangleShape2D_dxym0")
 debug_color = Color(0.64262533, 0.40566707, 0.85104734, 0.41960785)
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=411012275]
+modulate = Color(0.33681524, 0.18270826, 0.096260585, 1)
+position = Vector2(0, -5.9604645e-08)
+scale = Vector2(0.1953125, 0.0546875)
+texture = ExtResource("2_b3q82")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
