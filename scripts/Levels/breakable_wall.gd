@@ -11,6 +11,9 @@ var is_locked := true
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var broken_sfx: AudioStreamPlayer2D = $BrokenSFX
 @onready var cracked_sfx: AudioStreamPlayer2D = $CrackedSFX
+const BREAKABLE_WALL_1 = preload("uid://ypmmahgu855c")
+const BREAKABLE_WALL_2 = preload("uid://2vhhnope0mws")
+const BREAKABLE_WALL_3 = preload("uid://dvag6rgoalon")
 
 func _ready() -> void:
 	current_health = max_health
@@ -31,11 +34,13 @@ func take_damage(amount: int) -> void :
 		var tween = create_tween().tween_property(self, "scale", Vector2(1.2,1.2), 1.67)
 		tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_ELASTIC)
 		await tween.finished
-		var tween_out = create_tween().tween_property(self, "scale", Vector2(0.8,0.8), 1)
+		sprite_2d.texture = BREAKABLE_WALL_2
+		var tween_out = create_tween().tween_property(self, "scale", Vector2.ONE, 1)
 		tween_out.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 		return
 	
 	current_health -= amount
+	sprite_2d.texture = BREAKABLE_WALL_3
 	if current_health <= 0 :
 		wall_destroyed.emit()
 		broken_sfx.play()

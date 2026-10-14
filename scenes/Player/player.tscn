@@ -1,38 +1,84 @@
 [gd_scene format=3 uid="uid://cai268m7e08xa"]
 
 [ext_resource type="Script" uid="uid://vhf8hmwv80g2" path="res://scripts/Player/player.gd" id="1_1kbk7"]
-[ext_resource type="Texture2D" uid="uid://cvcyuf028h1f" path="res://icon.svg" id="1_cyojo"]
+[ext_resource type="Texture2D" uid="uid://blrj2tvarxs85" path="res://assets/player-idle/1.png" id="2_a06cl"]
+[ext_resource type="Texture2D" uid="uid://ddw6cqbnvibit" path="res://assets/player-idle/2.png" id="3_dl1wr"]
 [ext_resource type="PackedScene" uid="uid://b5jyjscbe2oqg" path="res://scenes/Hammer/hammer_pivot.tscn" id="3_gqjuk"]
 [ext_resource type="AudioStream" uid="uid://djdrp3qdgev27" path="res://assets/audio/SFX/player_jump.wav" id="4_hvfru"]
+[ext_resource type="Texture2D" uid="uid://dbtvcojuiwrsi" path="res://assets/player-run/run0000.png" id="4_n7rn1"]
 [ext_resource type="AudioStream" uid="uid://bn0r8p8wbkmfy" path="res://assets/audio/SFX/player_hurt.mp3" id="4_uiqp4"]
+[ext_resource type="Texture2D" uid="uid://cfh836rjvvtub" path="res://assets/player-run/run0002.png" id="5_7tfl1"]
 [ext_resource type="AudioStream" uid="uid://40ckado4qm6h" path="res://assets/audio/SFX/player_death.wav" id="5_hvfru"]
+[ext_resource type="Texture2D" uid="uid://cvffvsdk0rj5c" path="res://assets/player-run/run0004.png" id="6_jxtnq"]
+[ext_resource type="Texture2D" uid="uid://dmjhbfp4slim8" path="res://assets/player-run/run0006.png" id="7_t6q27"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04dxk"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a06cl")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_dl1wr")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_n7rn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7tfl1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jxtnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t6q27")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 10.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04dxk"]
-radius = 40.0
-height = 86.0
+radius = 12.0
+height = 28.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5i7ya"]
-radius = 38.327538
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n7rn1"]
+radius = 7.0
+height = 28.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1422318831 groups=["Player"]]
 z_index = 2
 collision_layer = 2
 script = ExtResource("1_1kbk7")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1472587453]
-z_index = 1
-scale = Vector2(0.6484375, 0.6484375)
-texture = ExtResource("1_cyojo")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=601556715]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_04dxk")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.2332899
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=125531959]
+position = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_04dxk")
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=663458961]
+position = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=775921106]
-shape = SubResource("CircleShape2D_5i7ya")
+shape = SubResource("CapsuleShape2D_n7rn1")
 debug_color = Color(0.7043441, 0.42293438, 0.6538377, 0.41960785)
 
 [node name="HammerPivot" type="Sprite2D" parent="." unique_id=1760131048]

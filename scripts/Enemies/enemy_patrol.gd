@@ -1,7 +1,7 @@
 extends EnemyBase
 
 @onready var wall_check: RayCast2D = $wall_check
-@onready var sprite_2d: Sprite2D = $sprite
+@onready var sprite_2d: AnimatedSprite2D = $sprite
 @onready var hitbox: Area2D = $Hitbox
 
 var direction := 1.0

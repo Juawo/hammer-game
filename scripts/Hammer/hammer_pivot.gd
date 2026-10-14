@@ -11,7 +11,7 @@ var orbit_speed_modifier = 1
 var current_charge := 0.0
 var is_charging := false
 
-var target_scale_ui := 0.5
+var target_scale_ui := 0.3
 var ui_tween : Tween
 
 @onready var sprite: Sprite2D = $sprite
@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		sprite.position.x = MAX_ORBIT_DISTANCE
 		hammer_area.position.x = MAX_ORBIT_DISTANCE
 		
-	var ui_offset = Vector2(0, -60) # altura da progress
+	var ui_offset = Vector2(0, -30) # altura da progress
 	progress_bar.global_position = sprite.global_position + ui_offset - (progress_bar.pivot_offset * progress_bar.scale)
 	
 	if Input.is_action_pressed("charge_hammer"):

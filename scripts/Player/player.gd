@@ -11,7 +11,7 @@ var jump_modifier := 1.0
 const INVULNERABILITY_TIME = 1.5
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 @onready var jump_sfx: AudioStreamPlayer2D = $JumpSFX
 @onready var hurt_sfx: AudioStreamPlayer2D = $HurtSFX
@@ -31,7 +31,9 @@ func _physics_process(delta: float) -> void:
 		return
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
+	sprite_2d.play("idle")
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = (JUMP_VELOCITY * jump_modifier)
@@ -40,9 +42,11 @@ func _physics_process(delta: float) -> void:
 		
 	var direction := Input.get_axis("left", "right")
 	if direction:
+		sprite_2d.play("run")
 		velocity.x = move_toward(velocity.x, direction * (MAX_SPEED * speed_modifier), ACCELERATION * delta)
 		sprite_2d.flip_h = direction < 0
 	else:
+		sprite_2d.play("run")
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 
 	if knockback_velocity != Vector2.ZERO :
@@ -50,7 +54,6 @@ func _physics_process(delta: float) -> void:
 		knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, FRICTION * 1.5 * delta)
 		
 	move_and_slide()
-	
 
 func apply_knockback(force : Vector2) -> void :
 	knockback_velocity = force
