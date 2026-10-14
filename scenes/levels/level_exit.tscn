@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c6l4fed0qo1lk"]
 
 [ext_resource type="Script" uid="uid://cd360o8iitwnv" path="res://scenes/levels/level_exit.gd" id="1_oaugr"]
+[ext_resource type="Texture2D" uid="uid://co7hn7lcuffja" path="res://assets/square_light.png" id="2_ogp71"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
 size = Vector2(38, 20)
@@ -41,5 +42,8 @@ angle_max = 92.1
 scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_04dxk")
 color_initial_ramp = SubResource("Gradient_b83sn")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=15734842]
+texture = ExtResource("2_ogp71")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

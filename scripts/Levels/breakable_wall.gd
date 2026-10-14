@@ -11,6 +11,7 @@ var is_locked := true
 @onready var hurtbox: Area2D = $Hurtbox
 @onready var broken_sfx: AudioStreamPlayer2D = $BrokenSFX
 @onready var cracked_sfx: AudioStreamPlayer2D = $CrackedSFX
+
 const BREAKABLE_WALL_1 = preload("uid://ypmmahgu855c")
 const BREAKABLE_WALL_2 = preload("uid://2vhhnope0mws")
 const BREAKABLE_WALL_3 = preload("uid://dvag6rgoalon")
@@ -31,20 +32,47 @@ func take_damage(amount: int) -> void :
 		is_locked = false
 		wall_cracked.emit()
 		cracked_sfx.play()
-		var tween = create_tween().tween_property(self, "scale", Vector2(1.2,1.2), 1.67)
-		tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_ELASTIC)
-		await tween.finished
-		sprite_2d.texture = BREAKABLE_WALL_2
-		var tween_out = create_tween().tween_property(self, "scale", Vector2.ONE, 1)
-		tween_out.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+		animate_hit(BREAKABLE_WALL_2)
 		return
 	
 	current_health -= amount
-	sprite_2d.texture = BREAKABLE_WALL_3
+	
 	if current_health <= 0 :
 		wall_destroyed.emit()
 		broken_sfx.play()
-		var tween = create_tween().tween_property(self, "scale", Vector2(0,0), 0.8)
-		tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_ELASTIC)
+		
+		
+		collision_layer = 0
+		collision_mask = 0
+		hurtbox.queue_free() 
+		
+		sprite_2d.material.set_shader_parameter("hit_flash_on", true)
+		GameManager.frame_pause(0.25)
+		var tween = create_tween().set_trans(Tween.TRANS_QUAD)
+		
+		tween.tween_property(sprite_2d, "position:y", sprite_2d.position.y - 30, 0.2).set_ease(Tween.EASE_OUT)
+		tween.parallel().tween_property(sprite_2d, "rotation", deg_to_rad(randf_range(-45.0, 45.0)), 0.2)
+		tween.tween_property(sprite_2d, "position:y", sprite_2d.position.y + 400, 0.5).set_ease(Tween.EASE_IN)
+		tween.parallel().tween_property(sprite_2d, "modulate:a", 0.0, 0.5) # Fica invisível ao cair
+		await get_tree().create_timer(0.15).timeout
+		sprite_2d.material.set_shader_parameter("hit_flash_on", false)
+		
 		await tween.finished
 		queue_free()
+	else:
+		GameManager.frame_pause(0.15)
+		animate_hit(BREAKABLE_WALL_3)
+
+
+func animate_hit(next_texture: Texture2D) -> void:
+	sprite_2d.material.set_shader_parameter("hit_flash_on", true)
+	
+	var tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(sprite_2d, "scale", Vector2(1.3, 1.3), 0.1)
+	
+	tween.tween_callback(func(): 
+		sprite_2d.texture = next_texture
+		sprite_2d.material.set_shader_parameter("hit_flash_on", false)
+	)
+	
+	tween.tween_property(sprite_2d, "scale", Vector2.ONE, 0.1)
