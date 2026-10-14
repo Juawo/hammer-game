@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://52rxk6v26a2i"]
+
+[ext_resource type="Script" uid="uid://b61jbnnbx07vq" path="res://scripts/Levels/breakable_wall.gd" id="1_fgyny"]
+[ext_resource type="Shader" uid="uid://ymje6vfu3ytf" path="res://assets/hit_flash.gdshader" id="2_75uux"]
+[ext_resource type="Texture2D" uid="uid://ypmmahgu855c" path="res://assets/breakable_wall/breakable_wall_1.png" id="2_ty7rr"]
+[ext_resource type="AudioStream" uid="uid://v7l1iud2c3ai" path="res://assets/audio/SFX/breakablewall_cracked.wav" id="3_rryx4"]
+[ext_resource type="AudioStream" uid="uid://crr5tcylxr6wb" path="res://assets/audio/SFX/breakablewall_broken.wav" id="4_ty7rr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wi74t"]
+shader = ExtResource("2_75uux")
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
+size = Vector2(15, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i7ya"]
+size = Vector2(15, 48)
+
+[node name="BreakableWall" type="StaticBody2D" unique_id=1804956141]
+collision_mask = 0
+script = ExtResource("1_fgyny")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2136850293]
+material = SubResource("ShaderMaterial_wi74t")
+texture = ExtResource("2_ty7rr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=944104145]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_04dxk")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=715793167]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=226045513]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_5i7ya")
+debug_color = Color(0.7677736, 0.40907738, 0.48687822, 0.41960785)
+
+[node name="CrackedSFX" type="AudioStreamPlayer2D" parent="." unique_id=974617326]
+stream = ExtResource("3_rryx4")
+bus = &"SFX"
+
+[node name="BrokenSFX" type="AudioStreamPlayer2D" parent="." unique_id=199791352]
+stream = ExtResource("4_ty7rr")
+bus = &"SFX"
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

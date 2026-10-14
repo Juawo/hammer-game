@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://d1ilvr76v7c5k"]
+
+[ext_resource type="Script" uid="uid://i7nxhbvhqwxv" path="res://scripts/Enemies/enemy_patrol.gd" id="1_25k3p"]
+[ext_resource type="Shader" uid="uid://ymje6vfu3ytf" path="res://assets/hit_flash.gdshader" id="1_wbwk1"]
+[ext_resource type="Texture2D" uid="uid://b3fhu3leiqhhd" path="res://assets/enemy-1-run/1.png" id="2_6f4c0"]
+[ext_resource type="PackedScene" uid="uid://r04tfpinw5mt" path="res://scenes/hitbox.tscn" id="3_an6w3"]
+[ext_resource type="Texture2D" uid="uid://btgq1syj81nuh" path="res://assets/enemy-1-run/2.png" id="3_iopxk"]
+[ext_resource type="Texture2D" uid="uid://crr0rk7xdbx0l" path="res://assets/enemy-1-run/3.png" id="4_wbwk1"]
+[ext_resource type="Texture2D" uid="uid://by4r7wrhm75ad" path="res://assets/round_light.png" id="6_iopxk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wbwk1"]
+shader = ExtResource("1_wbwk1")
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04dxk"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6f4c0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iopxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wbwk1")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04dxk"]
+size = Vector2(14.000002, 8.000002)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5i7ya"]
+size = Vector2(12.000006, 7.0000033)
+
+[node name="EnemyPatrol" type="CharacterBody2D" unique_id=941073137 node_paths=PackedStringArray("sprite_node") groups=["Enemies"]]
+scale = Vector2(1.8, 2.1)
+collision_layer = 4
+script = ExtResource("1_25k3p")
+max_health = 2
+sprite_node = NodePath("sprite")
+
+[node name="sprite" type="AnimatedSprite2D" parent="." unique_id=518578544]
+material = SubResource("ShaderMaterial_wbwk1")
+sprite_frames = SubResource("SpriteFrames_04dxk")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.55222905
+
+[node name="collision" type="CollisionShape2D" parent="." unique_id=1465143544]
+position = Vector2(-2.3841858e-07, 4)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_04dxk")
+
+[node name="wall_check" type="RayCast2D" parent="." unique_id=1175736309]
+position = Vector2(0, 4)
+target_position = Vector2(10, 0)
+
+[node name="Hitbox" parent="." unique_id=1467584518 instance=ExtResource("3_an6w3")]
+position = Vector2(1, -7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1166465925]
+position = Vector2(-1, 11.5)
+scale = Vector2(0.9999995, 0.9999995)
+shape = SubResource("RectangleShape2D_5i7ya")
+debug_color = Color(0.64262533, 0.40566707, 0.85104734, 0.41960785)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=590770301]
+color = Color(1, 0.62, 0.62, 1)
+energy = 0.2
+texture = ExtResource("6_iopxk")
+texture_scale = 0.5
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=824472778]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
