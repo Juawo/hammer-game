@@ -1,11 +1,11 @@
 extends EnemyBase
 
 @onready var wall_check: RayCast2D = $wall_check
-@onready var sprite_2d: Sprite2D = $sprite
+@onready var sprite_2d: AnimatedSprite2D = $sprite
 @onready var shoot_timer: Timer = $shoot_timer
 @onready var shoot_sfx: AudioStreamPlayer2D = $ShootSFX
 
-var direction := 1.0
+var direction := 1
 var projectile_scene : PackedScene = preload("uid://do7cj3138njd8")
 var target_player : Node2D
 var is_preparing_to_shoot := false
@@ -13,6 +13,9 @@ var stored_shoot_direction := 1.0
 
 func _ready() -> void:
 	super._ready()
+	direction = [-1.0, 1.0].pick_random()
+	wall_check.target_position.x = abs(wall_check.target_position.x) * direction
+	sprite_2d.flip_h = direction > 0
 
 func process_enemy_movement(_delta: float) -> void :
 	if is_preparing_to_shoot :
@@ -24,17 +27,18 @@ func process_enemy_movement(_delta: float) -> void :
 		
 		var direction_to_player = sign(target_player.global_position.x - global_position.x)
 		if direction_to_player != 0 :
-			sprite_2d.flip_h = direction_to_player < 0
+			sprite_2d.flip_h = direction_to_player > 0
 			stored_shoot_direction = direction_to_player
-		
+			direction = direction_to_player
+			wall_check.target_position.x = abs(wall_check.target_position.x) * direction
 		is_preparing_to_shoot = true
 		shoot_timer.start()
 		
 	else :
 		if wall_check.is_colliding():
-			direction *= -1.0
+			direction *= -1
 			wall_check.target_position.x *= -1.0
-			sprite_2d.flip_h = direction < 0
+			sprite_2d.flip_h = direction > 0
 			 
 		velocity.x = direction * speed
 
@@ -62,3 +66,6 @@ func _on_shoot_area_body_exited(body: Node2D) -> void:
 func _on_shoot_timer_timeout() -> void:
 	shoot(stored_shoot_direction)
 	is_preparing_to_shoot = false
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	queue_free()

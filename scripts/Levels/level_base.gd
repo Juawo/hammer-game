@@ -54,11 +54,9 @@ func update_spawners_generation(new_interval: float) -> void:
 	#  add juice and animations here, for get more frenetic emotion in the player
 
 func _on_level_finished() -> void :
-	print("NEXT LEVEL!")
 	# add level transition / add juice/animation
 	
 	if next_level != null :
-		print("NO HAVE NEXT LEVEL")
-		get_tree().change_scene_to_packed(next_level)
+		TransitionManager.transition_to_file(next_level.resource_path)
 	else :
 		GameManager.win_game()

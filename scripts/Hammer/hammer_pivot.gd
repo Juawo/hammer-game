@@ -2,16 +2,16 @@ extends Node2D
 
 const MAX_CHARGE_TIME = 1.0
 const MIN_CHARGE_TIME = 0.1
-const MAX_KNOCKBACK_FORCE = 300.0
+const MAX_KNOCKBACK_FORCE = 400.0
 
 const ORBIT_SPEED = 15.0
-const MAX_ORBIT_DISTANCE = 300.0 #position.x do hammer_area
+const MAX_ORBIT_DISTANCE = 130.0 #position.x do hammer_area
 
 var orbit_speed_modifier = 1
 var current_charge := 0.0
 var is_charging := false
 
-var target_scale_ui := 0.5
+var target_scale_ui := 0.3
 var ui_tween : Tween
 
 @onready var sprite: Sprite2D = $sprite
@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		sprite.position.x = MAX_ORBIT_DISTANCE
 		hammer_area.position.x = MAX_ORBIT_DISTANCE
 		
-	var ui_offset = Vector2(0, -60) # altura da progress
+	var ui_offset = Vector2(0, -30) # altura da progress
 	progress_bar.global_position = sprite.global_position + ui_offset - (progress_bar.pivot_offset * progress_bar.scale)
 	
 	if Input.is_action_pressed("charge_hammer"):
