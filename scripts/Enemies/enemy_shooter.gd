@@ -13,9 +13,8 @@ var stored_shoot_direction := 1.0
 
 func _ready() -> void:
 	super._ready()
-	var rand_dir = [-1,1].pick_random()
-	direction = rand_dir
-	wall_check.target_position.x *= rand_dir
+	direction = [-1.0, 1.0].pick_random()
+	wall_check.target_position.x = abs(wall_check.target_position.x) * direction
 	sprite_2d.flip_h = direction > 0
 
 func process_enemy_movement(_delta: float) -> void :
@@ -30,7 +29,8 @@ func process_enemy_movement(_delta: float) -> void :
 		if direction_to_player != 0 :
 			sprite_2d.flip_h = direction_to_player > 0
 			stored_shoot_direction = direction_to_player
-
+			direction = direction_to_player
+			wall_check.target_position.x = abs(wall_check.target_position.x) * direction
 		is_preparing_to_shoot = true
 		shoot_timer.start()
 		

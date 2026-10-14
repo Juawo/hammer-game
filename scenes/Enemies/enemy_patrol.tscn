@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://r04tfpinw5mt" path="res://scenes/hitbox.tscn" id="3_an6w3"]
 [ext_resource type="Texture2D" uid="uid://btgq1syj81nuh" path="res://assets/enemy-1-run/2.png" id="3_iopxk"]
 [ext_resource type="Texture2D" uid="uid://crr0rk7xdbx0l" path="res://assets/enemy-1-run/3.png" id="4_wbwk1"]
+[ext_resource type="Texture2D" uid="uid://by4r7wrhm75ad" path="res://assets/round_light.png" id="6_iopxk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_04dxk"]
 animations = [{
@@ -35,6 +36,7 @@ size = Vector2(14.000002, 8.000002)
 size = Vector2(12.000006, 7.0000033)
 
 [node name="EnemyPatrol" type="CharacterBody2D" unique_id=941073137 groups=["Enemies"]]
+scale = Vector2(1.8, 2.1)
 collision_layer = 4
 script = ExtResource("1_25k3p")
 
@@ -61,3 +63,8 @@ position = Vector2(-1, 11.5)
 scale = Vector2(0.9999995, 0.9999995)
 shape = SubResource("RectangleShape2D_5i7ya")
 debug_color = Color(0.64262533, 0.40566707, 0.85104734, 0.41960785)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=590770301]
+color = Color(1, 0.62, 0.62, 1)
+texture = ExtResource("6_iopxk")
+texture_scale = 0.4

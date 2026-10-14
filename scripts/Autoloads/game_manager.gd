@@ -23,18 +23,17 @@ func start_new_game() -> void:
 	SoundManager.play_music(GAME_MUSIC)
 
 func _on_level_started() -> void:
-	toggle_timer_count()
+	toggle_timer_count(true)
 	is_in_game = true
 
 func register_death() -> void :
-	# TODO : add scene transition with juice
 	Engine.time_scale = 1
 	total_deaths += 1
-	toggle_timer_count()
+	toggle_timer_count(false)
 	TransitionManager.transition_to_file(get_tree().current_scene.scene_file_path)
 	
 func win_game() -> void :
-	toggle_timer_count()
+	toggle_timer_count(false)
 	is_in_game = false
 	TransitionManager.transition_to_file(win_game_scene)
 
@@ -47,14 +46,14 @@ func toggle_pause() -> void:
 	get_tree().paused = new_pause_state
 	
 	if new_pause_state:
-		toggle_timer_count()
+		toggle_timer_count(false)
 		PauseMenu.show_pause_menu()
 	else:
-		toggle_timer_count()
+		toggle_timer_count(true)
 		PauseMenu.hide_pause_menu()
 
-func toggle_timer_count() -> void:
-	is_run_active = !is_run_active
+func toggle_timer_count(is_active: bool) -> void:
+	is_run_active = is_active
 
 func get_formated_time() -> String:
 	var minutes := int(total_time) / 60

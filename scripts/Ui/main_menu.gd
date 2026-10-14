@@ -21,7 +21,7 @@ func _on_exit_btn_pressed() -> void:
 func _on_logo_pressed() -> void:
 	OS.shell_open("https://www.instagram.com/funaxys/")
 
-
 func _on_tutorial_btn_2_pressed() -> void:
+	GameManager.start_new_game()
 	SoundManager.play_sfx(UI_CLICK, 0.1)
 	TransitionManager.transition_to_file(LEVEL_TUTORIAL)

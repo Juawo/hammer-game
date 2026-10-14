@@ -2,10 +2,10 @@ extends Node2D
 
 const MAX_CHARGE_TIME = 1.0
 const MIN_CHARGE_TIME = 0.1
-const MAX_KNOCKBACK_FORCE = 300.0
+const MAX_KNOCKBACK_FORCE = 400.0
 
 const ORBIT_SPEED = 15.0
-const MAX_ORBIT_DISTANCE = 300.0 #position.x do hammer_area
+const MAX_ORBIT_DISTANCE = 130.0 #position.x do hammer_area
 
 var orbit_speed_modifier = 1
 var current_charge := 0.0

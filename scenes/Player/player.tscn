@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://40ckado4qm6h" path="res://assets/audio/SFX/player_death.wav" id="5_hvfru"]
 [ext_resource type="Texture2D" uid="uid://cvffvsdk0rj5c" path="res://assets/player-run/run0004.png" id="6_jxtnq"]
 [ext_resource type="Texture2D" uid="uid://dmjhbfp4slim8" path="res://assets/player-run/run0006.png" id="7_t6q27"]
+[ext_resource type="Texture2D" uid="uid://by4r7wrhm75ad" path="res://assets/round_light.png" id="12_7tfl1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_04dxk"]
 animations = [{
@@ -23,7 +24,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_a06cl")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": ExtResource("3_dl1wr")
 }],
 "loop": 1,
@@ -48,29 +49,35 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_04dxk"]
-radius = 12.0
-height = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iopxk"]
+size = Vector2(10, 11.25)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n7rn1"]
-radius = 7.0
-height = 28.0
+radius = 4.0
+height = 14.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1422318831 groups=["Player"]]
 z_index = 2
+scale = Vector2(2, 1.6)
 collision_layer = 2
 script = ExtResource("1_1kbk7")
 
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=725600277]
+range_z_max = 1
+texture = ExtResource("12_7tfl1")
+texture_scale = 0.7
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=601556715]
-scale = Vector2(2, 2)
+texture_filter = 1
+texture_repeat = 3
 sprite_frames = SubResource("SpriteFrames_04dxk")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.2332899
+frame_progress = 0.80649143
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=125531959]
-position = Vector2(2, 2)
-shape = SubResource("CapsuleShape2D_04dxk")
+position = Vector2(1, 1.8750002)
+shape = SubResource("RectangleShape2D_iopxk")
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=663458961]
 position = Vector2(2, 2)
@@ -78,11 +85,13 @@ collision_layer = 2
 collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=775921106]
+position = Vector2(-1, -1)
 shape = SubResource("CapsuleShape2D_n7rn1")
 debug_color = Color(0.7043441, 0.42293438, 0.6538377, 0.41960785)
 
 [node name="HammerPivot" type="Sprite2D" parent="." unique_id=1760131048]
 z_index = 2
+scale = Vector2(0.6, 0.6)
 
 [node name="HammerPivot2" parent="HammerPivot" unique_id=144081329 instance=ExtResource("3_gqjuk")]
 position = Vector2(0, 1)

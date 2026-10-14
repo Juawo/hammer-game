@@ -1,8 +1,8 @@
 extends Control
 
-@onready var deaths: Label = $HBoxContainer/time_and_deaths/deaths_container/deaths
-@onready var time_count: Label = $HBoxContainer/time_and_deaths/time_count
-@onready var lifes: HBoxContainer = $HBoxContainer/lifes
+@onready var lifes: HBoxContainer = $MarginContainer/HBoxContainer/lifes
+@onready var deaths: Label = $MarginContainer/HBoxContainer/time_and_deaths/deaths_container/deaths
+@onready var time_count: Label = $MarginContainer/HBoxContainer/time_and_deaths/time_count
 
 const EMPTY_LIFE = preload("uid://c3hnatlrmbast")
 const BLANK_LIFE = preload("uid://b078p2kjp7h01")

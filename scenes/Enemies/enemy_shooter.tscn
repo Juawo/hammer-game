@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://r04tfpinw5mt" path="res://scenes/hitbox.tscn" id="3_83hif"]
 [ext_resource type="Texture2D" uid="uid://b1xativk7yrbr" path="res://assets/enemy-2-run/02.png" id="3_wi74t"]
 [ext_resource type="AudioStream" uid="uid://hta2vyj2jwps" path="res://assets/audio/SFX/enemy2_shoot.wav" id="5_75uos"]
+[ext_resource type="Texture2D" uid="uid://by4r7wrhm75ad" path="res://assets/round_light.png" id="6_wi74t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_04dxk"]
 animations = [{
@@ -35,6 +36,7 @@ size = Vector2(56, 14)
 size = Vector2(10, 9)
 
 [node name="EnemyShooter" type="CharacterBody2D" unique_id=599547735 groups=["Enemies"]]
+scale = Vector2(1.7, 1.7)
 collision_layer = 4
 script = ExtResource("1_4uixn")
 
@@ -77,6 +79,11 @@ debug_color = Color(0.64262533, 0.40566707, 0.85104734, 0.41960785)
 [node name="ShootSFX" type="AudioStreamPlayer2D" parent="." unique_id=599855090]
 stream = ExtResource("5_75uos")
 area_mask = 240
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1304872305]
+color = Color(1, 0.61, 0.61, 1)
+texture = ExtResource("6_wi74t")
+texture_scale = 0.6
 
 [connection signal="timeout" from="shoot_timer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="body_entered" from="shoot_area" to="." method="_on_shoot_area_body_entered"]

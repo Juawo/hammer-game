@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://pti5yq2b0qw8" path="res://scenes/levels/level_base.tscn" id="1_j2425"]
 [ext_resource type="PackedScene" uid="uid://bgkdiiads01ar" path="res://scenes/Enemies/enemy_spawner.tscn" id="2_g2h2n"]
-[ext_resource type="PackedScene" uid="uid://d26xmdpwaw8ta" path="res://scenes/levels/level_3.tscn" id="2_ra442"]
+[ext_resource type="PackedScene" uid="uid://dt3x6e6c5uut0" path="res://scenes/levels/level_3.tscn" id="2_ra442"]
 
 [node name="level_2" unique_id=1986938857 instance=ExtResource("1_j2425")]
 max_enemies_allowed = 4
@@ -22,6 +22,7 @@ rotation = 1.5707964
 [node name="BreakableWall" parent="Environment" parent_id_path=PackedInt32Array(834847580) index="3" unique_id=1804956141]
 position = Vector2(232, 247)
 rotation = 1.5707964
+max_health = 4
 
 [node name="Player" parent="Entities" parent_id_path=PackedInt32Array(1511458260) index="0" unique_id=1422318831]
 position = Vector2(232, 78)

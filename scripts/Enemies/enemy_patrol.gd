@@ -8,10 +8,14 @@ var direction := 1.0
 
 func _ready() -> void:
 	super._ready()
+	direction = [-1.0, 1.0].pick_random()
+	wall_check.target_position.x = abs(wall_check.target_position.x) * direction
+	sprite_2d.flip_h = direction > 0
 
 func process_enemy_movement(_delta: float) -> void :
 	if wall_check.is_colliding():
 		direction *= -1.0
 		wall_check.target_position.x *= -1.0
-		sprite_2d.flip_h = direction < 0
+		sprite_2d.flip_h = direction > 0
+		
 	velocity.x = direction * speed

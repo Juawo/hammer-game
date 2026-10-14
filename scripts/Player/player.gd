@@ -31,9 +31,7 @@ func _physics_process(delta: float) -> void:
 		return
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
-	sprite_2d.play("idle")
-	
+		
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = (JUMP_VELOCITY * jump_modifier)
@@ -46,7 +44,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, direction * (MAX_SPEED * speed_modifier), ACCELERATION * delta)
 		sprite_2d.flip_h = direction < 0
 	else:
-		sprite_2d.play("run")
+		sprite_2d.play("idle")
 		velocity.x = move_toward(velocity.x, 0, FRICTION * delta)
 
 	if knockback_velocity != Vector2.ZERO :
