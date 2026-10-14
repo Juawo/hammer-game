@@ -17,9 +17,6 @@ func _process(_delta: float) -> void:
 func update_life_visual(new_life_count: int) -> void:
 		var lifes_nodes = lifes.get_children()
 		lifes_nodes[new_life_count].texture = BLANK_LIFE
-		Engine.time_scale = 0.1
-		await get_tree().create_timer(0.1).timeout
-		Engine.time_scale = 1
 		lifes_nodes[new_life_count].texture = EMPTY_LIFE
 
 func update_deaths(new_deaths_count: int) -> void:

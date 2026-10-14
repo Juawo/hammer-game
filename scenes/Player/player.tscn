@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://blrj2tvarxs85" path="res://assets/player-idle/1.png" id="2_a06cl"]
 [ext_resource type="Texture2D" uid="uid://ddw6cqbnvibit" path="res://assets/player-idle/2.png" id="3_dl1wr"]
 [ext_resource type="PackedScene" uid="uid://b5jyjscbe2oqg" path="res://scenes/Hammer/hammer_pivot.tscn" id="3_gqjuk"]
+[ext_resource type="Shader" uid="uid://ymje6vfu3ytf" path="res://assets/hit_flash.gdshader" id="3_jxtnq"]
 [ext_resource type="AudioStream" uid="uid://djdrp3qdgev27" path="res://assets/audio/SFX/player_jump.wav" id="4_hvfru"]
 [ext_resource type="Texture2D" uid="uid://dbtvcojuiwrsi" path="res://assets/player-run/run0000.png" id="4_n7rn1"]
 [ext_resource type="AudioStream" uid="uid://bn0r8p8wbkmfy" path="res://assets/audio/SFX/player_hurt.mp3" id="4_uiqp4"]
@@ -12,6 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://cvffvsdk0rj5c" path="res://assets/player-run/run0004.png" id="6_jxtnq"]
 [ext_resource type="Texture2D" uid="uid://dmjhbfp4slim8" path="res://assets/player-run/run0006.png" id="7_t6q27"]
 [ext_resource type="Texture2D" uid="uid://by4r7wrhm75ad" path="res://assets/round_light.png" id="12_7tfl1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7tfl1"]
+shader = ExtResource("3_jxtnq")
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_04dxk"]
 animations = [{
@@ -63,6 +69,7 @@ collision_layer = 2
 script = ExtResource("1_1kbk7")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=725600277]
+energy = 0.4
 range_z_max = 1
 texture = ExtResource("12_7tfl1")
 texture_scale = 0.7
@@ -70,6 +77,7 @@ texture_scale = 0.7
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=601556715]
 texture_filter = 1
 texture_repeat = 3
+material = SubResource("ShaderMaterial_7tfl1")
 sprite_frames = SubResource("SpriteFrames_04dxk")
 animation = &"idle"
 autoplay = "idle"

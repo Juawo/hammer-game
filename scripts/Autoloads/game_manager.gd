@@ -55,6 +55,11 @@ func toggle_pause() -> void:
 func toggle_timer_count(is_active: bool) -> void:
 	is_run_active = is_active
 
+func frame_pause(duration: float = 0.05) -> void:
+	Engine.time_scale = 0.0
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1.0
+
 func get_formated_time() -> String:
 	var minutes := int(total_time) / 60
 	var seconds := int(total_time) % 60

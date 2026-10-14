@@ -67,20 +67,31 @@ func set_hammer_charging(is_charging : bool) -> void :
 		speed_modifier = 1.0
 		jump_modifier = 1.0
 
+# Adicione esta nova função no seu Player.gd
+func animate_hit() -> void:
+	
+	sprite_2d.material.set_shader_parameter("hit_flash_on", true)
+	var tween = create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_OUT)
+	tween.tween_property(sprite_2d, "scale", Vector2(1.3, 1.3), 0.1)
+	tween.tween_property(sprite_2d, "scale", Vector2.ONE, 0.1)
+	tween.tween_callback(func(): sprite_2d.material.set_shader_parameter("hit_flash_on", false))
+
+
+# E no seu código atual, altere o bloco do take_damage para chamar a função:
 func take_damage(value : int) -> void :
-	if is_invulnerable :
-		return
-		
-	if is_dead :
+	if is_invulnerable or is_dead:
 		return
 		
 	current_health -= value
 	Events.player_health_changed.emit(current_health)
+	
 	if current_health <= 0 :
 		die()
 	else :
+		GameManager.frame_pause(0.15)
 		hurt_sfx.pitch_scale = randf_range(0.9, 1.1)
 		hurt_sfx.play()
+		animate_hit() 
 		trigger_invulnerability(INVULNERABILITY_TIME)
 
 func trigger_invulnerability(duration: float) -> void:
@@ -107,6 +118,8 @@ func die() -> void :
 	GameManager.register_death()
 
 func die_animation() -> Signal:
+	animate_hit()
+	GameManager.frame_pause(0.3)
 	var tween = create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position:y", (position.y - 30),  0.5)
 	tween.tween_property(self, "scale", Vector2.ZERO, 1)
